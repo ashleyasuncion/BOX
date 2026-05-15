@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLP Lost & Found — New Post</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-page="post">
+
+  <div class="phone">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span>●●●</span>
+    </div>
+
+    <div class="screen">
+
+      <!-- Post header -->
+      <div class="post-header">
+        <a href="main-home.html" class="post-header-icon" id="postCloseBtn" title="Close">
+          <i class="ti ti-x"></i>
+        </a>
+        <h1 class="post-header-title">New Post</h1>
+        <div class="post-header-actions">
+          <div class="post-header-icon" title="Attach image">
+            <i class="ti ti-photo"></i>
+          </div>
+          <div class="post-header-icon" title="Camera">
+            <i class="ti ti-camera"></i>
+          </div>
+        </div>
+      </div>
+
+      <!-- Post body -->
+      <div class="post-body">
+
+        <!-- User row -->
+        <div class="post-user">
+          <div class="post-avatar">A</div>
+          <div class="post-username">Ash</div>
+        </div>
+
+        <!-- Category pills -->
+        <div class="post-categories">
+          <span class="post-pill post-pill-lost" data-cat="lost">Lost</span>
+          <span class="post-pill post-pill-found" data-cat="found">Found</span>
+          <span class="post-pill post-pill-lend" data-cat="lend">Lend</span>
+          <span class="post-pill post-pill-borrow" data-cat="borrow">Borrow</span>
+        </div>
+
+        <!-- Title input -->
+        <input type="text" class="post-title-input" placeholder="Title (Item Name)" />
+
+        <!-- Description -->
+        <textarea class="post-desc-input" placeholder="Description" rows="12"></textarea>
+
+        <!-- Location -->
+        <div class="post-location">
+          <i class="ti ti-map-pin"></i>
+          <input type="text" class="post-location-input" placeholder="Location" />
+        </div>
+
+      </div>
+
+      <!-- Post footer -->
+      <div class="post-footer">
+        <button class="post-submit-btn" onclick="window.location.href='main-home.html'">Post</button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+
+  <script>
+    /* ── Read source page from URL ── */
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'home';
+
+    /* ── Page mapping for back button ── */
+    const pageMap = {
+      home: 'main-home.html',
+      lost: 'main-lost.html',
+      found: 'main-found.html',
+      lend: 'main-lend.html',
+      borrow: 'main-borrow.html'
+    };
+
+    /* ── Set close button to go back to source page ── */
+    const closeBtn = document.getElementById('postCloseBtn');
+    closeBtn.href = pageMap[from] || 'main-home.html';
+
+    /* ── Set submit button to go back to source page ── */
+    const submitBtn = document.querySelector('.post-submit-btn');
+    submitBtn.onclick = () => {
+      window.location.href = pageMap[from] || 'main-home.html';
+    };
+
+    /* ── Category pills ── */
+    const pills = document.querySelectorAll('.post-pill');
+
+    /* ── Set default active pill based on source page ── */
+    if (from === 'home') {
+      // Home page: no pill selected (all categories available)
+      pills.forEach(p => p.classList.remove('active'));
+    } else {
+      // Specific page: select matching pill
+      pills.forEach(p => {
+        if (p.dataset.cat === from) {
+          p.classList.add('active');
+        } else {
+          p.classList.remove('active');
+        }
+      });
+    }
+
+    /* ── Pill click toggle ── */
+    pills.forEach(pill => {
+      pill.addEventListener('click', () => {
+        pills.forEach(p => p.classList.remove('active'));
+        pill.classList.add('active');
+      });
+    });
+  </script>
+
+</body>
+
+</html>

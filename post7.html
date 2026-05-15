@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLP Lost & Found — Wallet (Found)</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-page="post-view">
+
+  <div class="phone">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span>●●●</span>
+    </div>
+
+    <div class="screen">
+
+      <!-- Post view header -->
+      <div class="pv-header">
+        <a href="main-home.html" class="pv-header-icon" id="pvBack" title="Back">
+          <i class="ti ti-arrow-left"></i>
+        </a>
+        <div class="pv-header-spacer"></div>
+        <div class="pv-flag-badge pv-flag-found">
+          <i class="ti ti-flag-filled"></i>
+          <span>Found</span>
+        </div>
+        <button class="pv-overflow-btn" id="pvOverflowBtn" title="More options">
+          <i class="ti ti-dots-vertical"></i>
+        </button>
+      </div>
+
+      <!-- Overflow menu -->
+      <div class="pv-overflow-backdrop" id="pvOverflowBackdrop"></div>
+      <div class="pv-overflow-menu" id="pvOverflowMenu">
+
+        <button class="pv-overflow-item" id="overflowSaveImage">
+          <i class="ti ti-photo-down"></i>
+          <span>Save Image</span>
+        </button>
+
+        <button class="pv-overflow-item" id="overflowCopyLink">
+          <i class="ti ti-link"></i>
+          <span>Copy Link</span>
+        </button>
+
+        <button class="pv-overflow-item" id="overflowHide">
+          <i class="ti ti-eye-off"></i>
+          <span>Hide Post</span>
+        </button>
+
+        <div class="pv-overflow-divider"></div>
+
+        <button class="pv-overflow-item overflow-danger" id="overflowReport">
+          <i class="ti ti-flag"></i>
+          <span>Report</span>
+        </button>
+
+      </div>
+
+      <!-- Scrollable content -->
+      <div class="pv-scroll">
+
+        <!-- Image carousel -->
+        <div class="pv-carousel">
+          <div class="pv-carousel-track" id="pvTrack">
+            <div class="pv-slide">
+              <div class="pv-slide-placeholder"><i class="ti ti-wallet"></i></div>
+            </div>
+            <div class="pv-slide">
+              <div class="pv-slide-placeholder"><i class="ti ti-wallet"></i></div>
+            </div>
+            <div class="pv-slide">
+              <div class="pv-slide-placeholder"><i class="ti ti-wallet"></i></div>
+            </div>
+          </div>
+          <div class="pv-dots" id="pvDots">
+            <span class="pv-dot active"></span>
+            <span class="pv-dot"></span>
+            <span class="pv-dot"></span>
+          </div>
+          <button class="pv-arrow pv-arrow-left" id="pvPrev"><i class="ti ti-chevron-left"></i></button>
+          <button class="pv-arrow pv-arrow-right" id="pvNext"><i class="ti ti-chevron-right"></i></button>
+        </div>
+
+        <!-- Post details -->
+        <div class="pv-details">
+          <div class="pv-user">
+            <div class="pv-user-avatar">E</div>
+            <div class="pv-user-meta">
+              <div class="pv-user-name">Ella</div>
+              <div class="pv-user-time">10:02 AM</div>
+            </div>
+          </div>
+          <h1 class="pv-title">Wallet</h1>
+          <p class="pv-desc">Found a brown leather wallet near the cafeteria. Has an ID inside — come claim it! I turned
+            it in to the guard post at the main gate. Just bring a valid ID and describe the wallet to verify ownership.
+          </p>
+
+          <!-- Found info card -->
+          <div class="pv-found-info">
+            <div class="pv-found-info-row">
+              <i class="ti ti-map-pin"></i>
+              <div>
+                <div class="pv-found-info-label">Found at</div>
+                <div class="pv-found-info-value">Cafeteria Main Entrance</div>
+              </div>
+            </div>
+            <div class="pv-found-info-row">
+              <i class="ti ti-building"></i>
+              <div>
+                <div class="pv-found-info-label">Turned in to</div>
+                <div class="pv-found-info-value">Guard Post — Main Gate</div>
+              </div>
+            </div>
+            <div class="pv-found-info-row">
+              <i class="ti ti-clock"></i>
+              <div>
+                <div class="pv-found-info-label">Time found</div>
+                <div class="pv-found-info-value">Today, 10:02 AM</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="pv-location">
+            <i class="ti ti-map-pin"></i>
+            <span>Cafeteria Main Entrance</span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Bottom actions -->
+      <div class="pv-bottom">
+        <a href="comment.html?from=home" class="pv-bottom-btn pv-bottom-comment">
+          <i class="ti ti-message-circle"></i>
+          <span>Comment</span>
+        </a>
+        <button class="pv-bottom-btn pv-bottom-share">
+          <i class="ti ti-share"></i>
+          <span>Share</span>
+        </button>
+        <button class="pv-bottom-btn pv-bottom-bookmark">
+          <i class="ti ti-bookmark"></i>
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/app.js"></script>
+
+  <script>
+    /* ── Source page ── */
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'home';
+
+    const pageMap = {
+      home: 'main-home.html',
+      lost: 'main-lost.html',
+      found: 'main-found.html',
+      lend: 'main-lend.html',
+      borrow: 'main-borrow.html'
+    };
+
+    /* ── Back button ── */
+    document.getElementById('pvBack').href = pageMap[from] || 'main-home.html';
+
+    /* ── Comment link ── */
+    document.querySelector('.pv-bottom-comment').href = `comment.html?from=${from}`;
+
+    /* ── Carousel ── */
+    const track = document.getElementById('pvTrack');
+    const dots = document.querySelectorAll('.pv-dot');
+    const prevBtn = document.getElementById('pvPrev');
+    const nextBtn = document.getElementById('pvNext');
+    let currentSlide = 0;
+    const totalSlides = document.querySelectorAll('.pv-slide').length;
+
+    function goToSlide(i) {
+      currentSlide = Math.max(0, Math.min(i, totalSlides - 1));
+      track.style.transform = `translateX(-${currentSlide * 100}%)`;
+      dots.forEach((d, idx) => d.classList.toggle('active', idx === currentSlide));
+    }
+
+    prevBtn.addEventListener('click', () => goToSlide(currentSlide - 1));
+    nextBtn.addEventListener('click', () => goToSlide(currentSlide + 1));
+    dots.forEach((dot, idx) => dot.addEventListener('click', () => goToSlide(idx)));
+
+    let startX = 0;
+    track.addEventListener('touchstart', e => startX = e.touches[0].clientX);
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goToSlide(currentSlide + (diff > 0 ? 1 : -1));
+    });
+
+    /* ══════════════════════════════════════
+   OVERFLOW MENU
+   ══════════════════════════════════════ */
+
+    const overflowBtn = document.getElementById('pvOverflowBtn');
+    const overflowMenu = document.getElementById('pvOverflowMenu');
+    const overflowBackdrop = document.getElementById('pvOverflowBackdrop');
+
+    function openOverflow() {
+      overflowMenu.classList.add('open');
+      overflowBackdrop.classList.add('active');
+    }
+
+    function closeOverflow() {
+      overflowMenu.classList.remove('open');
+      overflowBackdrop.classList.remove('active');
+    }
+
+    overflowBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      overflowMenu.classList.contains('open') ? closeOverflow() : openOverflow();
+    });
+
+    overflowBackdrop.addEventListener('click', closeOverflow);
+
+    /* ── Save Image ── */
+    document.getElementById('overflowSaveImage').addEventListener('click', () => {
+      closeOverflow();
+      /* Placeholder — in production this would trigger image download */
+      const btn = document.getElementById('overflowSaveImage');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="ti ti-check"></i><span>Saved!</span>';
+      setTimeout(() => { btn.innerHTML = original; }, 1800);
+    });
+
+    /* ── Copy Link ── */
+    document.getElementById('overflowCopyLink').addEventListener('click', () => {
+      closeOverflow();
+      navigator.clipboard.writeText(window.location.href).catch(() => { });
+      const btn = document.getElementById('overflowCopyLink');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="ti ti-check"></i><span>Link Copied!</span>';
+      setTimeout(() => { btn.innerHTML = original; }, 1800);
+    });
+
+    /* ── Hide Post ── */
+    document.getElementById('overflowHide').addEventListener('click', () => {
+      closeOverflow();
+      /* Navigate back — simulates hiding and returning to feed */
+      history.back();
+    });
+
+    /* ── Report ── */
+    document.getElementById('overflowReport').addEventListener('click', () => {
+      closeOverflow();
+      const btn = document.getElementById('overflowReport');
+      const original = btn.innerHTML;
+      btn.innerHTML = '<i class="ti ti-flag"></i><span>Reported</span>';
+      btn.style.opacity = '0.5';
+      btn.style.pointerEvents = 'none';
+    });
+
+    /* ── Escape key ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeOverflow();
+    });
+  </script>
+
+</body>
+
+</html>
