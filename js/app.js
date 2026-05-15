@@ -54,6 +54,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const STORIES = [
     { img: 'images/stories/story-box.png', link: 'box.html' },
+    { img: 'images/stories/story-01.png', link: 'box-post1.html' },
     { img: 'images/stories/story-01.png' },
     { img: 'images/stories/story-02.png' },
     { img: 'images/stories/story-03.png' },
