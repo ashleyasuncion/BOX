@@ -7,14 +7,30 @@ document.addEventListener('DOMContentLoaded', () => {
   const icons = document.querySelectorAll('.topbar-icon');
   const activePage = document.body.dataset.page;
 
+  /* Check if current user is admin */
+  function getCurrentAccount() {
+    const raw = sessionStorage.getItem('plpbox_account');
+    if (!raw) return null;
+    try { return JSON.parse(raw); } catch { return null; }
+  }
+
+  const currentAccount = getCurrentAccount();
+  const isAdmin = currentAccount && currentAccount.role === 'admin';
+
   const pages = {
-    home: 'main-home.html',
+    home: isAdmin ? 'admin-main-home.html' : 'main-home.html',
     borrow: 'main-borrow.html',
     lend: 'main-lend.html',
     found: 'main-found.html',
     lost: 'main-lost.html'
   };
 
+  /* Redirect to login if no session (skip login/splash pages) */
+  const publicPages = ['login', 'splash'];
+
+  if (!currentAccount && !publicPages.includes(activePage)) {
+    window.location.href = 'login.html';
+  }
   icons.forEach(icon => {
     const nav = icon.dataset.nav;
 
@@ -43,10 +59,130 @@ document.addEventListener('DOMContentLoaded', () => {
   // ══════════════════════════════════════
 
   const ACCOUNTS = [
-    { user: 'student', pass: 'pass123', redirect: 'main-home.html' },
-    { user: 'anna@plp.edu', pass: 'anna2025', redirect: 'main-home.html' },
-    { user: '2024-00123', pass: 'mypass', redirect: 'main-home.html' }
+    {
+      user: 'student',
+      pass: 'pass123',
+      role: 'student',
+      displayName: 'Yves Santos',
+      handle: '@yves.santos',
+      studentId: '2024-00123',
+      email: 'yves.santos@plp.edu',
+      course: 'BSBA 3A',
+      avatar: 'Y',
+      allowedPosts: ['lost', 'found', 'lend', 'borrow'],
+      defaultPost: null,
+      redirect: 'admin-main-home.html'
+    },
+    {
+      user: 'lost.user',
+      pass: 'lost123',
+      role: 'student',
+      displayName: 'Leo Santos',
+      handle: '@leo.santos',
+      studentId: '2024-00124',
+      email: 'leo.santos@plp.edu',
+      course: 'BSIT 2B',
+      avatar: 'L',
+      allowedPosts: ['lost'],
+      defaultPost: 'lost',
+      redirect: 'main-lost.html'
+    },
+    {
+      user: 'found.user',
+      pass: 'found123',
+      role: 'student',
+      displayName: 'Faye Reyes',
+      handle: '@faye.reyes',
+      studentId: '2024-00125',
+      email: 'faye.reyes@plp.edu',
+      course: 'BSED 1A',
+      avatar: 'F',
+      allowedPosts: ['found'],
+      defaultPost: 'found',
+      redirect: 'main-found.html'
+    },
+    {
+      user: 'lend.user',
+      pass: 'lend123',
+      role: 'student',
+      displayName: 'Lance Cruz',
+      handle: '@lance.cruz',
+      studentId: '2024-00126',
+      email: 'lance.cruz@plp.edu',
+      course: 'BSBA 1C',
+      avatar: 'LC',
+      allowedPosts: ['lend'],
+      defaultPost: 'lend',
+      redirect: 'main-lend.html'
+    },
+    {
+      user: 'borrow.user',
+      pass: 'borrow123',
+      role: 'student',
+      displayName: 'Bea Mendoza',
+      handle: '@bea.mendoza',
+      studentId: '2024-00127',
+      email: 'bea.mendoza@plp.edu',
+      course: 'BSBA 2A',
+      avatar: 'B',
+      allowedPosts: ['borrow'],
+      defaultPost: 'borrow',
+      redirect: 'main-borrow.html'
+    },
+    {
+      user: 'admin',
+      pass: 'admin123',
+      role: 'admin',
+      displayName: 'PLP Box Admin',
+      handle: '@plpbox.admin',
+      studentId: 'ADMIN-001',
+      email: 'admin@plp.edu',
+      course: 'Administrator',
+      avatar: 'A',
+      allowedPosts: ['lost', 'found', 'lend', 'borrow'],
+      defaultPost: null,
+      redirect: 'admin-main-home.html'
+    }
   ];
+
+
+  // ══════════════════════════════════════
+  // AVATAR — inject logged-in user's avatar
+  // letter into all .composer-avatar and
+  // .post-avatar elements
+  // ══════════════════════════════════════
+
+  // ══════════════════════════════════════
+  // SESSION UI — inject logged-in user info
+  // ══════════════════════════════════════
+
+  if (currentAccount) {
+
+    /* ── Profile page map per account ── */
+    const profileMap = {
+      'student': 'profile.html',
+      'lost.user': 'profile-lost.html',
+      'found.user': 'profile-found.html',
+      'lend.user': 'profile-lend.html',
+      'borrow.user': 'profile-borrow.html',
+      'admin': 'profile-admin.html'
+    };
+
+    const profilePage = profileMap[currentAccount.user] || 'profile.html';
+
+    /* ── Composer avatar letter ── */
+    document.querySelectorAll('.composer-avatar').forEach(el => {
+      el.textContent = currentAccount.avatar;
+    });
+
+    /* ── Composer avatar links → correct profile page ── */
+    document.querySelectorAll('a.composer-avatar-link').forEach(el => {
+      const href = el.getAttribute('href') || '';
+      const fromParam = new URLSearchParams(href.split('?')[1] || '').get('from') || activePage;
+      el.href = `${profilePage}?from=${fromParam}`;
+    });
+  }
+
 
   // ══════════════════════════════════════
   // STORIES
@@ -68,8 +204,16 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (strip) {
     STORIES.forEach(story => {
-      const card = story.link
-        ? Object.assign(document.createElement('a'), { href: story.link })
+      let link = story.link || null;
+
+      // pass the current page as ?from=
+      if (link) {
+        const separator = link.includes('?') ? '&' : '?';
+        link = `${link}${separator}from=${activePage}`;
+      }
+
+      const card = link
+        ? Object.assign(document.createElement('a'), { href: link })
         : document.createElement('div');
 
       card.className = 'story-card';
@@ -84,7 +228,6 @@ document.addEventListener('DOMContentLoaded', () => {
       strip.appendChild(card);
     });
   }
-
   // ══════════════════════════════════════
   // SEARCH — shared helper
   // ══════════════════════════════════════

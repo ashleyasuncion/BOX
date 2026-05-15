@@ -58,22 +58,96 @@
 
   <script>
     /*
-     * ─── DUMMY ACCOUNTS ───
-     * Add more objects to this array for future accounts.
-     * Each account needs: user, pass, and redirect.
-     */
+        * ─── ACCOUNT REGISTRY ───
+        * role: 'admin' | 'student'
+        * allowedPosts: array of allowed categories — null means all
+        * defaultPost: which pill is pre-selected on post.html
+        */
     const ACCOUNTS = [
       {
         user: 'student',
         pass: 'pass123',
+        role: 'student',
+        displayName: 'Yves Santos',
+        handle: '@yves.santos',
+        studentId: '2024-00123',
+        email: 'yves.santos@plp.edu',
+        course: 'BSBA 3A',
+        avatar: 'Y',
+        allowedPosts: ['lost', 'found', 'lend', 'borrow'],
+        defaultPost: null,
         redirect: 'main-home.html'
+      },
+      {
+        user: 'lost.user',
+        pass: 'lost123',
+        role: 'student',
+        displayName: 'Leo Santos',
+        handle: '@leo.santos',
+        studentId: '2024-00124',
+        email: 'leo.santos@plp.edu',
+        course: 'BSIT 2B',
+        avatar: 'L',
+        allowedPosts: ['lost'],
+        defaultPost: 'lost',
+        redirect: 'main-lost.html'
+      },
+      {
+        user: 'found.user',
+        pass: 'found123',
+        role: 'student',
+        displayName: 'Faye Reyes',
+        handle: '@faye.reyes',
+        studentId: '2024-00125',
+        email: 'faye.reyes@plp.edu',
+        course: 'BSED 1A',
+        avatar: 'F',
+        allowedPosts: ['found'],
+        defaultPost: 'found',
+        redirect: 'main-found.html'
+      },
+      {
+        user: 'lend.user',
+        pass: 'lend123',
+        role: 'student',
+        displayName: 'Lance Cruz',
+        handle: '@lance.cruz',
+        studentId: '2024-00126',
+        email: 'lance.cruz@plp.edu',
+        course: 'BSBA 1C',
+        avatar: 'LC',
+        allowedPosts: ['lend'],
+        defaultPost: 'lend',
+        redirect: 'main-lend.html'
+      },
+      {
+        user: 'borrow.user',
+        pass: 'borrow123',
+        role: 'student',
+        displayName: 'Bea Mendoza',
+        handle: '@bea.mendoza',
+        studentId: '2024-00127',
+        email: 'bea.mendoza@plp.edu',
+        course: 'BSBA 2A',
+        avatar: 'B',
+        allowedPosts: ['borrow'],
+        defaultPost: 'borrow',
+        redirect: 'main-borrow.html'
+      },
+      {
+        user: 'admin',
+        pass: 'admin123',
+        role: 'admin',
+        displayName: 'PLP Box Admin',
+        handle: '@plpbox.admin',
+        studentId: 'ADMIN-001',
+        email: 'admin@plp.edu',
+        course: 'Administrator',
+        avatar: 'A',
+        allowedPosts: ['lost', 'found', 'lend', 'borrow'],
+        defaultPost: null,
+        redirect: 'admin-main-home.html'
       }
-      // ── Add more accounts here ──
-      // {
-      //   user: 'anna@plp.edu',
-      //   pass: 'anna2025',
-      //   redirect: 'main-home.html'
-      // },
     ];
 
     function handleLogin(e) {
@@ -83,21 +157,20 @@
       const passInput = document.getElementById('loginPass').value;
       const errorEl = document.getElementById('loginError');
 
-      // Clear previous error
       errorEl.textContent = '';
 
-      // Empty check
       if (!userInput || !passInput) {
         errorEl.textContent = 'Please fill in both fields.';
         return false;
       }
 
-      // Match against accounts
       const match = ACCOUNTS.find(
         acc => acc.user.toLowerCase() === userInput && acc.pass === passInput
       );
 
       if (match) {
+        /* Store account in sessionStorage — available across all pages */
+        sessionStorage.setItem('plpbox_account', JSON.stringify(match));
         window.location.href = match.redirect;
       } else {
         errorEl.textContent = 'Invalid email/student number or password.';

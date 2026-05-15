@@ -24,7 +24,7 @@
 
       <!-- Box header -->
       <div class="box-header">
-        <a href="main-home.html" class="box-header-icon" title="Back">
+        <a href="main-home.html" class="box-header-icon" id="boxBack" title="Back">
           <i class="ti ti-arrow-left"></i>
         </a>
         <div class="box-search-bar">
@@ -39,7 +39,7 @@
       <!-- Grid -->
       <div class="box-grid box-grid-found">
 
-        <a href="box-post1.html" class="box-item box-item-link">
+        <a href="box-post1.html?from=box" class="box-item box-item-link">
           <div class="box-item-img">
             <img src="images/box/box-01.jpg" alt="Black Water Bottle" />
           </div>
@@ -391,6 +391,22 @@
   <script src="js/app.js"></script>
 
   <script>
+    /* ── Source page ── */
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'home';
+
+    const pageMap = {
+      home: 'main-home.html',
+      lost: 'main-lost.html',
+      found: 'main-found.html',
+      lend: 'main-lend.html',
+      borrow: 'main-borrow.html',
+      box: 'box.html'
+    };
+
+    /* ── Back button ── */
+    document.getElementById('boxBack').href = pageMap[from] || 'main-home.html';
+
     /* ── Claim overlay (FAB) ── */
     const fab = document.getElementById('boxFab');
     const claimOv = document.getElementById('claimOverlay');

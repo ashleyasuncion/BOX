@@ -47,22 +47,46 @@
           <div class="post-username">Yves Santos</div>
         </div>
 
+        <!-- Admin: Posting for field (hidden by default) -->
+        <div class="post-on-behalf" id="postOnBehalf" style="display: none;">
+          <div class="post-on-behalf-label">
+            <i class="ti ti-users"></i>
+            <span>Posting on behalf of</span>
+          </div>
+          <input type="text" class="post-on-behalf-input" id="postOnBehalfInput"
+            placeholder="Student name (leave blank if posting as admin)" />
+        </div>
+
         <!-- Category pills -->
         <div class="post-categories">
           <span class="post-pill post-pill-lost" data-cat="lost">Lost</span>
           <span class="post-pill post-pill-found" data-cat="found">Found</span>
           <span class="post-pill post-pill-lend" data-cat="lend">Lend</span>
           <span class="post-pill post-pill-borrow" data-cat="borrow">Borrow</span>
+          <span class="post-pill post-pill-announce" data-cat="announce" style="display: none;">Announce</span>
+          <span class="post-pill post-pill-box" data-cat="box" style="display: none;">BOX</span>
         </div>
 
         <!-- Title input -->
-        <input type="text" class="post-title-input" placeholder="Title (Item Name)" />
+        <input type="text" class="post-title-input" id="postTitleInput" placeholder="Title (Item Name)" />
 
         <!-- Description -->
         <textarea class="post-desc-input" placeholder="Description" rows="12"></textarea>
 
-        <!-- Location -->
-        <div class="post-location">
+        <!-- BOX-only fields (hidden by default) -->
+        <div class="post-box-fields" id="postBoxFields" style="display: none;">
+          <div class="post-location">
+            <i class="ti ti-map-pin"></i>
+            <input type="text" class="post-location-input" placeholder="Where was it found?" />
+          </div>
+          <div class="post-location">
+            <i class="ti ti-building"></i>
+            <input type="text" class="post-location-input" placeholder="Turned in to (e.g. Guard Post)" />
+          </div>
+        </div>
+
+        <!-- Location (regular posts) -->
+        <div class="post-location" id="postRegularLocation">
           <i class="ti ti-map-pin"></i>
           <input type="text" class="post-location-input" placeholder="Location" />
         </div>
@@ -71,7 +95,7 @@
 
       <!-- Post footer -->
       <div class="post-footer">
-        <button class="post-submit-btn" onclick="window.location.href='main-home.html'">Post</button>
+        <button class="post-submit-btn" id="postSubmitBtn">Post</button>
       </div>
 
     </div>
@@ -80,11 +104,10 @@
   <script src="js/app.js"></script>
 
   <script>
-    /* ── Read source page from URL ── */
+    /* ── Source page ── */
     const params = new URLSearchParams(window.location.search);
     const from = params.get('from') || 'home';
 
-    /* ── Page mapping for back button ── */
     const pageMap = {
       home: 'main-home.html',
       lost: 'main-lost.html',
@@ -93,41 +116,106 @@
       borrow: 'main-borrow.html'
     };
 
-    /* ── Set close button to go back to source page ── */
+    /* ── Close / submit ── */
     const closeBtn = document.getElementById('postCloseBtn');
-    closeBtn.href = pageMap[from] || 'main-home.html';
+    const submitBtn = document.getElementById('postSubmitBtn');
 
-    /* ── Set submit button to go back to source page ── */
-    const submitBtn = document.querySelector('.post-submit-btn');
+    closeBtn.href = pageMap[from] || 'main-home.html';
     submitBtn.onclick = () => {
       window.location.href = pageMap[from] || 'main-home.html';
     };
 
-    /* ── Category pills ── */
-    const pills = document.querySelectorAll('.post-pill');
-
-    /* ── Set default active pill based on source page ── */
-    if (from === 'home') {
-      // Home page: no pill selected (all categories available)
-      pills.forEach(p => p.classList.remove('active'));
-    } else {
-      // Specific page: select matching pill
-      pills.forEach(p => {
-        if (p.dataset.cat === from) {
-          p.classList.add('active');
-        } else {
-          p.classList.remove('active');
-        }
-      });
+    /* ── Get account ── */
+    function getCurrentAccount() {
+      const raw = sessionStorage.getItem('plpbox_account');
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch { return null; }
     }
 
-    /* ── Pill click toggle ── */
+    const account = getCurrentAccount();
+    const allowed = account ? account.allowedPosts : ['lost', 'found', 'lend', 'borrow'];
+    const defaultPost = account ? account.defaultPost : null;
+    const isAdmin = account && account.role === 'admin';
+
+    /* ── Fill user info ── */
+    if (account) {
+      const avatarEl = document.querySelector('.post-avatar');
+      const nameEl = document.querySelector('.post-username');
+      if (avatarEl) avatarEl.textContent = account.avatar;
+      if (nameEl) nameEl.textContent = account.displayName;
+    }
+
+    /* ── Admin-only UI ── */
+    if (isAdmin) {
+      /* Show "Posting on behalf of" field */
+      document.getElementById('postOnBehalf').style.display = '';
+
+      /* Show Announce and BOX pills */
+      document.querySelector('[data-cat="announce"]').style.display = '';
+      document.querySelector('[data-cat="box"]').style.display = '';
+    }
+
+    /* ── Category pills — hide disallowed (for non-admin) ── */
+    const pills = document.querySelectorAll('.post-pill');
+
+    pills.forEach(pill => {
+      const cat = pill.dataset.cat;
+
+      /* Admin extra pills are handled above */
+      if (cat === 'announce' || cat === 'box') return;
+
+      if (!allowed.includes(cat)) {
+        pill.style.display = 'none';
+      }
+    });
+
+    /* ── Set default active pill ── */
+    const activeCategory = defaultPost || from;
+
+    pills.forEach(pill => {
+      const cat = pill.dataset.cat;
+      if (cat === activeCategory && pill.style.display !== 'none') {
+        pill.classList.add('active');
+      } else {
+        pill.classList.remove('active');
+      }
+    });
+
+    /* ── BOX fields toggle ── */
+    const boxFields = document.getElementById('postBoxFields');
+    const regularLocation = document.getElementById('postRegularLocation');
+    const titleInput = document.getElementById('postTitleInput');
+
+    function updateFieldsForCategory(cat) {
+      if (cat === 'box') {
+        boxFields.style.display = '';
+        regularLocation.style.display = 'none';
+        titleInput.placeholder = 'Item Name (e.g. Black Water Bottle)';
+      } else if (cat === 'announce') {
+        boxFields.style.display = 'none';
+        regularLocation.style.display = 'none';
+        titleInput.placeholder = 'Announcement Title';
+      } else {
+        boxFields.style.display = 'none';
+        regularLocation.style.display = '';
+        titleInput.placeholder = 'Title (Item Name)';
+      }
+    }
+
+    /* ── Pill click ── */
     pills.forEach(pill => {
       pill.addEventListener('click', () => {
         pills.forEach(p => p.classList.remove('active'));
         pill.classList.add('active');
+        updateFieldsForCategory(pill.dataset.cat);
       });
     });
+
+    /* ── Set initial fields ── */
+    const initialActive = document.querySelector('.post-pill.active');
+    if (initialActive) {
+      updateFieldsForCategory(initialActive.dataset.cat);
+    }
   </script>
 
 </body>

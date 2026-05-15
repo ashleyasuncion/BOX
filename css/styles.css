@@ -5451,3 +5451,225 @@ CHAT — Message Bubbles (conversation)
   max-width: none;
   border-radius: 24px 24px 28px 28px;
 }
+
+/* ── Admin profile badge variant ── */
+.profile-badge-admin {
+  background: #DDEAFF;
+  border-color: #B8D4FF;
+  color: #0044CC;
+}
+
+/* ══════════════════════════════════════
+   ANNOUNCEMENT CARD
+   ══════════════════════════════════════ */
+
+.card-announcement {
+  background: linear-gradient(135deg, #F0F4FF 0%, #E8EEFF 100%);
+  border-bottom: 0.5px solid #C8D6FF;
+  padding: 0;
+}
+
+.card-announcement-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 16px 8px;
+}
+
+.card-announcement-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #0044CC 0%, #0066FF 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.card-announcement-label {
+  flex: 1;
+  min-width: 0;
+}
+
+.card-announcement-tag {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0044CC;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.card-announcement-time {
+  font-size: 11px;
+  color: #888;
+  font-weight: 500;
+}
+
+.card-announcement-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 4px 10px;
+  background: rgba(0, 68, 204, 0.10);
+  border-radius: 60px;
+  font-size: 10px;
+  font-weight: 700;
+  color: #0044CC;
+  flex-shrink: 0;
+}
+
+.card-announcement-badge i {
+  font-size: 12px;
+}
+
+.card-announcement-body {
+  padding: 0 16px 12px;
+}
+
+.card-announcement-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 6px;
+}
+
+.card-announcement-text {
+  font-size: 13px;
+  color: #555;
+  line-height: 1.6;
+}
+
+.card-announcement-footer {
+  padding: 8px 16px 12px;
+  border-top: 0.5px solid rgba(0, 68, 204, 0.10);
+}
+
+.card-announcement-reactions {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #888;
+}
+
+.card-announcement-reactions i {
+  font-size: 15px;
+  color: #0044CC;
+}
+
+/* ══════════════════════════════════════
+   POST PAGE — On Behalf Of (admin)
+   ══════════════════════════════════════ */
+
+.post-on-behalf {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 10px 14px;
+  background: #F0F4FF;
+  border: 0.5px solid #C8D6FF;
+  border-radius: 12px;
+}
+
+.post-on-behalf-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 700;
+  color: #0044CC;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.post-on-behalf-label i {
+  font-size: 14px;
+}
+
+.post-on-behalf-input {
+  width: 100%;
+  height: 36px;
+  border: 0.5px solid #C8D6FF;
+  border-radius: 8px;
+  background: #fff;
+  padding: 0 12px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.post-on-behalf-input::placeholder {
+  color: #AAA;
+  font-weight: 400;
+}
+
+.post-on-behalf-input:focus {
+  border-color: #0044CC;
+}
+
+/* ══════════════════════════════════════
+   POST PAGE — Announce Pill
+   ══════════════════════════════════════ */
+
+.post-pill-announce {
+  background: #E8EEFF;
+  color: #0044CC;
+  border-color: #E8EEFF;
+}
+
+.post-pill-announce.active {
+  background: #0044CC;
+  color: #fff;
+  border-color: #0044CC;
+}
+
+/* ══════════════════════════════════════
+   POST PAGE — BOX Pill
+   ══════════════════════════════════════ */
+
+.post-pill-box {
+  background: #E0F0D8;
+  color: #2E7D00;
+  border-color: #E0F0D8;
+}
+
+.post-pill-box.active {
+  background: #2E7D00;
+  color: #fff;
+  border-color: #2E7D00;
+}
+
+/* ══════════════════════════════════════
+   ADMIN BADGE — shown in composer
+   ══════════════════════════════════════ */
+
+.admin-badge {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #4CAF50 0%, #2E7D32 100%);
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  flex-shrink: 0;
+  box-shadow: 0 2px 6px rgba(76, 175, 80, 0.3);
+}
+
+/* ══════════════════════════════════════
+   ADMIN PROFILE BADGE
+   ══════════════════════════════════════ */
+
+.profile-badge-admin {
+  background: #DDEAFF;
+  border-color: #B8D4FF;
+  color: #0044CC;
+}

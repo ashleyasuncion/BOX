@@ -24,7 +24,7 @@
 
       <!-- Post view header -->
       <div class="pv-header">
-        <a href="box.html" class="pv-header-icon" id="pvBack" title="Back">
+        <a href="#" class="pv-header-icon" id="pvBack" title="Back">
           <i class="ti ti-arrow-left"></i>
         </a>
         <div class="pv-header-spacer"></div>
@@ -235,6 +235,27 @@
   <script src="js/app.js"></script>
 
   <script>
+    /* ── Source page ── */
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'box';
+
+    const pageMap = {
+      home: 'main-home.html',
+      lost: 'main-lost.html',
+      found: 'main-found.html',
+      lend: 'main-lend.html',
+      borrow: 'main-borrow.html',
+      box: 'box.html'
+    };
+
+    const backTarget = pageMap[from] || 'box.html';
+
+    /* ── Dynamic links ── */
+    document.getElementById('pvBack').href = backTarget;
+    document.querySelector('.pv-bottom-comment').href = `comment.html?from=${from}`;
+    document.getElementById('shareFbLink').href = `share-fb.html?from=${from}&post=box-post1`;
+    document.getElementById('shareIgLink').href = `share-ig.html?from=${from}&post=box-post1`;
+
     /* ══════════════════════════════════════
        CAROUSEL
        ══════════════════════════════════════ */
@@ -307,7 +328,7 @@
 
     document.getElementById('overflowHide').addEventListener('click', () => {
       closeOverflow();
-      window.location.href = 'box.html';
+      window.location.href = backTarget;
     });
 
     document.getElementById('overflowReport').addEventListener('click', () => {

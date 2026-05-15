@@ -302,7 +302,34 @@
   <script src="js/app.js"></script>
 
   <script>
-    /* ── Read source page ── */
+    /* ── Get session account ── */
+    function getCurrentAccount() {
+      const raw = sessionStorage.getItem('plpbox_account');
+      if (!raw) return null;
+      try { return JSON.parse(raw); } catch { return null; }
+    }
+
+    const account = getCurrentAccount();
+
+    /* ── Populate profile fields from session ── */
+    if (account) {
+      const set = (sel, val) => {
+        const el = document.querySelector(sel);
+        if (el) el.textContent = val;
+      };
+
+      set('.profile-avatar-lg', account.avatar);
+      set('.profile-display-name', account.displayName);
+      set('.profile-handle', account.handle);
+
+      /* Info grid values */
+      const infoValues = document.querySelectorAll('.profile-info-value');
+      if (infoValues[0]) infoValues[0].textContent = account.studentId;
+      if (infoValues[1]) infoValues[1].textContent = account.email;
+      if (infoValues[2]) infoValues[2].textContent = account.course;
+    }
+
+    /* ── Source page ── */
     const params = new URLSearchParams(window.location.search);
     const from = params.get('from') || 'home';
 
@@ -314,7 +341,6 @@
       borrow: 'main-borrow.html'
     };
 
-    /* ── Back button ── */
     document.getElementById('profileBack').href = pageMap[from] || 'main-home.html';
 
     /* ── Post filter tabs ── */
@@ -327,13 +353,9 @@
         tab.classList.add('active');
 
         const filter = tab.dataset.filter;
-
         postCards.forEach(card => {
-          if (filter === 'all' || card.dataset.type === filter) {
-            card.style.display = 'flex';
-          } else {
-            card.style.display = 'none';
-          }
+          card.style.display =
+            (filter === 'all' || card.dataset.type === filter) ? 'flex' : 'none';
         });
       });
     });
@@ -348,8 +370,9 @@
     settingsBd.addEventListener('click', () => settingsOv.classList.remove('active'));
     settingsClose.addEventListener('click', () => settingsOv.classList.remove('active'));
 
-    /* ── Logout ── */
+    /* ── Logout — clear session ── */
     document.getElementById('logoutBtn').addEventListener('click', () => {
+      sessionStorage.removeItem('plpbox_account');
       window.location.href = 'login.html';
     });
 
