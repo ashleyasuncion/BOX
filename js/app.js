@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
   // ══════════════════════════════════════
 
   const ACCOUNTS = [
-    { user: 'student@plp.edu', pass: 'pass123', redirect: 'main-home.html' },
+    { user: 'student', pass: 'pass123', redirect: 'main-home.html' },
     { user: 'anna@plp.edu', pass: 'anna2025', redirect: 'main-home.html' },
     { user: '2024-00123', pass: 'mypass', redirect: 'main-home.html' }
   ];
