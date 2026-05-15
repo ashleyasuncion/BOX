@@ -493,7 +493,7 @@ body {
 }
 
 /* ══════════════════════════════════════
-   SPLASH SCREEN
+   SPLASH SCREEN / INDEX.HTML
    ══════════════════════════════════════ */
 
 .splash-screen {
@@ -505,6 +505,7 @@ body {
   cursor: pointer;
   user-select: none;
   -webkit-tap-highlight-color: transparent;
+  gap: 0;
 }
 
 .splash-hint {
@@ -512,7 +513,25 @@ body {
   font-size: 13px;
   color: #AAA;
   font-weight: 500;
-  animation: pulse-hint 2s ease-in-out infinite;
+  margin-bottom: 14px;
+}
+
+/* ── Progress bar ── */
+.splash-progress-track {
+  width: 140px;
+  height: 3px;
+  background: #E0DEDB;
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+.splash-progress-bar {
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(90deg, #1A1A2E 0%, #4A4A7A 100%);
+  border-radius: 99px;
+  transition: none;
+  /* set via JS */
 }
 
 @keyframes pulse-hint {

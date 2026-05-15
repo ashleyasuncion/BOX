@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>PLP Lost & Found — Splash</title>
+  <title>PLP Box</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
@@ -21,18 +21,47 @@
     </div>
 
     <div class="screen">
-      <div class="splash-screen" onclick="window.location.href='login.html'">
+      <div class="splash-screen">
 
-        <!-- Logo placeholder -->
         <img src="images/logo.png" alt="PLP Box Logo" class="splash-logo-img" />
 
-        <div class="splash-hint">Tap anywhere to continue</div>
+        <div class="splash-hint">Redirecting to login…</div>
+
+        <!-- Progress bar -->
+        <div class="splash-progress-track">
+          <div class="splash-progress-bar" id="splashProgress"></div>
+        </div>
 
       </div>
     </div>
   </div>
 
   <script src="js/app.js"></script>
+
+  <script>
+    const DELAY = 2800; /* ms before redirect */
+
+    /* Animate progress bar */
+    const bar = document.getElementById('splashProgress');
+    bar.style.transition = `width ${DELAY}ms linear`;
+
+    /* Start animation on next frame so transition fires */
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        bar.style.width = '100%';
+      });
+    });
+
+    /* Redirect after delay */
+    setTimeout(() => {
+      window.location.href = 'login.html';
+    }, DELAY);
+
+    /* Still allow tap-to-skip */
+    document.querySelector('.splash-screen').addEventListener('click', () => {
+      window.location.href = 'login.html';
+    });
+  </script>
 
 </body>
 
