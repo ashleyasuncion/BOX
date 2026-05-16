@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>PLP Lost & Found — Sign Up</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body data-page="signup">
+
+  <div class="phone">
+    <div class="status-bar">
+      <span>9:41</span>
+      <span>●●●</span>
+    </div>
+
+    <div class="screen">
+      <div class="signup-screen">
+
+        <!-- Back to login -->
+        <div class="signup-header">
+          <a href="login.html" class="signup-back" title="Back to Login">
+            <i class="ti ti-arrow-left"></i>
+          </a>
+        </div>
+
+        <!-- Logo -->
+        <img src="images/logo.png" alt="PLP Box Logo" class="signup-logo-img" />
+
+        <!-- Title -->
+        <div class="signup-title">Create Account</div>
+        <div class="signup-subtitle">Join the PLP Lost & Found community</div>
+
+        <!-- Form -->
+        <form class="signup-form" id="signupForm" onsubmit="return handleSignup(event)">
+
+          <!-- Name row -->
+          <div class="signup-row">
+            <input type="text" class="signup-input" id="signupFirst" placeholder="First name" />
+            <input type="text" class="signup-input" id="signupLast" placeholder="Last name" />
+          </div>
+
+          <!-- Student ID -->
+          <div class="signup-input-group">
+            <i class="ti ti-hash"></i>
+            <input type="text" class="signup-input signup-input-icon" id="signupStudentId"
+              placeholder="Student number (e.g. 2024-00123)" />
+          </div>
+
+          <!-- Email -->
+          <div class="signup-input-group">
+            <i class="ti ti-mail"></i>
+            <input type="email" class="signup-input signup-input-icon" id="signupEmail"
+              placeholder="PLP email (e.g. name@plp.edu)" />
+          </div>
+
+          <!-- Course & Section -->
+          <div class="signup-input-group">
+            <i class="ti ti-school"></i>
+            <input type="text" class="signup-input signup-input-icon" id="signupCourse"
+              placeholder="Course & Section (e.g. BSBA 3A)" />
+          </div>
+
+          <!-- Password -->
+          <div class="signup-input-group">
+            <i class="ti ti-lock"></i>
+            <input type="password" class="signup-input signup-input-icon" id="signupPass"
+              placeholder="Create password" />
+            <button type="button" class="signup-toggle-pass" id="togglePass" title="Show password">
+              <i class="ti ti-eye"></i>
+            </button>
+          </div>
+
+          <!-- Confirm Password -->
+          <div class="signup-input-group">
+            <i class="ti ti-lock-check"></i>
+            <input type="password" class="signup-input signup-input-icon" id="signupPassConfirm"
+              placeholder="Confirm password" />
+          </div>
+
+          <!-- Error -->
+          <div class="signup-error" id="signupError"></div>
+
+          <!-- Submit -->
+          <button type="submit" class="login-btn login-btn-primary">Create Account</button>
+
+        </form>
+
+        <!-- Terms -->
+        <div class="signup-terms">
+          By signing up, you agree to the
+          <a href="#">Terms of Service</a> and
+          <a href="#">Privacy Policy</a>
+        </div>
+
+        <!-- Divider -->
+        <div class="login-divider"></div>
+
+        <!-- Back to login -->
+        <div class="signup-login-link">
+          Already have an account?
+          <a href="login.html">Log In</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script>
+    /* ── Toggle password visibility ── */
+    const toggleBtn = document.getElementById('togglePass');
+    const passInput = document.getElementById('signupPass');
+    let passVisible = false;
+
+    toggleBtn.addEventListener('click', () => {
+      passVisible = !passVisible;
+      passInput.type = passVisible ? 'text' : 'password';
+      toggleBtn.innerHTML = passVisible
+        ? '<i class="ti ti-eye-off"></i>'
+        : '<i class="ti ti-eye"></i>';
+    });
+
+    /* ── Form validation ── */
+    function handleSignup(e) {
+      e.preventDefault();
+
+      const first = document.getElementById('signupFirst').value.trim();
+      const last = document.getElementById('signupLast').value.trim();
+      const studentId = document.getElementById('signupStudentId').value.trim();
+      const email = document.getElementById('signupEmail').value.trim();
+      const course = document.getElementById('signupCourse').value.trim();
+      const pass = document.getElementById('signupPass').value;
+      const passConfirm = document.getElementById('signupPassConfirm').value;
+      const errorEl = document.getElementById('signupError');
+
+      errorEl.textContent = '';
+
+      /* ── Validations ── */
+      if (!first || !last) {
+        errorEl.textContent = 'Please enter your full name.';
+        return false;
+      }
+
+      if (!studentId) {
+        errorEl.textContent = 'Please enter your student number.';
+        return false;
+      }
+
+      if (!email) {
+        errorEl.textContent = 'Please enter your PLP email.';
+        return false;
+      }
+
+      if (!email.endsWith('@plp.edu')) {
+        errorEl.textContent = 'Please use a valid PLP email (@plp.edu).';
+        return false;
+      }
+
+      if (!course) {
+        errorEl.textContent = 'Please enter your course and section.';
+        return false;
+      }
+
+      if (!pass) {
+        errorEl.textContent = 'Please create a password.';
+        return false;
+      }
+
+      if (pass.length < 6) {
+        errorEl.textContent = 'Password must be at least 6 characters.';
+        return false;
+      }
+
+      if (pass !== passConfirm) {
+        errorEl.textContent = 'Passwords do not match.';
+        return false;
+      }
+
+      /* ── Success — simulate account creation ── */
+      const displayName = `${first} ${last}`;
+      const handle = `@${first.toLowerCase()}.${last.toLowerCase()}`;
+      const avatar = first.charAt(0).toUpperCase();
+
+      const newAccount = {
+        user: email.split('@')[0],
+        pass: pass,
+        role: 'student',
+        displayName: displayName,
+        handle: handle,
+        studentId: studentId,
+        email: email,
+        course: course,
+        avatar: avatar,
+        allowedPosts: ['lost', 'found', 'lend', 'borrow'],
+        defaultPost: null,
+        redirect: 'main-home.html'
+      };
+
+      /* Store in session and redirect */
+      sessionStorage.setItem('plpbox_account', JSON.stringify(newAccount));
+
+      /* Show success briefly then redirect */
+      errorEl.style.color = '#4CAF50';
+      errorEl.textContent = 'Account created! Redirecting...';
+
+      const submitBtn = document.querySelector('.login-btn-primary');
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Creating...';
+
+      setTimeout(() => {
+        window.location.href = 'main-home.html';
+      }, 1500);
+
+      return false;
+    }
+  </script>
+
+</body>
+
+</html>

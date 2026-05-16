@@ -5713,3 +5713,218 @@ CHAT — Message Bubbles (conversation)
   color: #1A1A1A;
   font-weight: 600;
 }
+
+/* ══════════════════════════════════════
+   SIGNUP PAGE
+   ══════════════════════════════════════ */
+
+[data-page="signup"] .screen {
+  overflow-y: hidden;
+}
+
+.signup-screen {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 26px 32px;
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #D6D4CE transparent;
+}
+
+.signup-screen::-webkit-scrollbar {
+  width: 4px;
+}
+
+.signup-screen::-webkit-scrollbar-thumb {
+  background: #D6D4CE;
+  border-radius: 4px;
+}
+
+/* ── Header ── */
+.signup-header {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  padding: 14px 0 0;
+  flex-shrink: 0;
+}
+
+.signup-back {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #666;
+  font-size: 20px;
+  text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.signup-back:hover {
+  background: #F2F1ED;
+  color: #1A1A1A;
+}
+
+/* ── Logo ── */
+.signup-logo-img {
+  width: 70px;
+  height: auto;
+  object-fit: contain;
+  margin: 12px 0 16px;
+}
+
+/* ── Title ── */
+.signup-title {
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A1A1A;
+  margin-bottom: 4px;
+}
+
+.signup-subtitle {
+  font-size: 13px;
+  font-weight: 500;
+  color: #AAA;
+  margin-bottom: 24px;
+}
+
+/* ── Form ── */
+.signup-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+/* ── Name row ── */
+.signup-row {
+  display: flex;
+  gap: 10px;
+}
+
+.signup-row .signup-input {
+  flex: 1;
+}
+
+/* ── Input ── */
+.signup-input {
+  width: 100%;
+  height: 48px;
+  background: #EBEBEB;
+  border: 1px solid #B0B0B0;
+  border-radius: 14px;
+  padding: 0 16px;
+  font-size: 14px;
+  font-family: 'DM Sans', sans-serif;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.signup-input::placeholder {
+  color: #999;
+  font-weight: 500;
+  font-size: 13px;
+}
+
+.signup-input:focus {
+  border-color: #0000FF;
+  background: #F5F5FF;
+}
+
+/* ── Input with icon ── */
+.signup-input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.signup-input-group>i {
+  position: absolute;
+  left: 14px;
+  font-size: 16px;
+  color: #AAA;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.signup-input-icon {
+  padding-left: 40px;
+}
+
+/* ── Toggle password ── */
+.signup-toggle-pass {
+  position: absolute;
+  right: 6px;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: none;
+  background: none;
+  color: #AAA;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: color 0.12s, background 0.12s;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.signup-toggle-pass:hover {
+  background: #E0DEDB;
+  color: #666;
+}
+
+/* ── Error ── */
+.signup-error {
+  font-size: 13px;
+  color: #E24B4A;
+  font-weight: 500;
+  min-height: 18px;
+  text-align: center;
+  padding: 0 4px;
+}
+
+/* ── Terms ── */
+.signup-terms {
+  font-size: 11px;
+  font-weight: 500;
+  color: #AAA;
+  text-align: center;
+  margin-top: 16px;
+  line-height: 1.5;
+}
+
+.signup-terms a {
+  color: #1A1A2E;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.signup-terms a:hover {
+  text-decoration: underline;
+}
+
+/* ── Login link ── */
+.signup-login-link {
+  font-size: 13px;
+  font-weight: 500;
+  color: #888;
+  text-align: center;
+}
+
+.signup-login-link a {
+  color: #1A1A2E;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.signup-login-link a:hover {
+  text-decoration: underline;
+}
