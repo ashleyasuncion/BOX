@@ -5673,3 +5673,43 @@ CHAT — Message Bubbles (conversation)
   border-color: #B8D4FF;
   color: #0044CC;
 }
+
+/* ══════════════════════════════════════
+   ON BEHALF OF — Admin post card
+   ══════════════════════════════════════ */
+
+.card-on-behalf {
+  border-left: 3px solid #0044CC;
+}
+
+.avatar-admin {
+  background: linear-gradient(135deg, #0044CC 0%, #0066FF 100%);
+  color: #fff;
+}
+
+.on-behalf-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #0044CC;
+  margin-left: 4px;
+}
+
+.card-on-behalf-tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+}
+
+.card-on-behalf-tag i {
+  font-size: 14px;
+  color: #0044CC;
+}
+
+.card-on-behalf-tag strong {
+  color: #1A1A1A;
+  font-weight: 600;
+}
