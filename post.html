@@ -73,6 +73,56 @@
         <!-- Description -->
         <textarea class="post-desc-input" placeholder="Description" rows="12"></textarea>
 
+        <!-- Lend-only fields (hidden by default) -->
+        <div class="post-lend-fields" id="postLendFields" style="display: none;">
+
+          <!-- Price type toggle -->
+          <div class="post-price-toggle">
+            <button type="button" class="post-price-option active" id="priceFreeBtn" data-price="free">
+              <i class="ti ti-coin-off"></i>
+              <span>Free</span>
+            </button>
+            <button type="button" class="post-price-option" id="pricePaidBtn" data-price="paid">
+              <i class="ti ti-coin"></i>
+              <span>With Fee</span>
+            </button>
+          </div>
+
+          <!-- Price input (hidden when free) -->
+          <div class="post-price-input-wrap" id="postPriceWrap" style="display: none;">
+            <div class="post-price-input-group">
+              <span class="post-price-currency">₱</span>
+              <input type="number" class="post-price-input" id="postPriceInput" placeholder="0.00" min="0"
+                step="0.01" />
+            </div>
+            <div class="post-price-hint">Set the lending fee amount</div>
+          </div>
+
+          <!-- Return policy -->
+          <div class="post-lend-field">
+            <div class="post-lend-field-label">
+              <i class="ti ti-refresh"></i>
+              <span>Return Policy</span>
+            </div>
+            <div class="post-lend-chips">
+              <span class="post-lend-chip active" data-return="after-class">After class</span>
+              <span class="post-lend-chip" data-return="same-day">Same day</span>
+              <span class="post-lend-chip" data-return="next-day">Next day</span>
+              <span class="post-lend-chip" data-return="custom">Custom</span>
+            </div>
+          </div>
+
+          <!-- Available until -->
+          <div class="post-lend-field">
+            <div class="post-lend-field-label">
+              <i class="ti ti-clock"></i>
+              <span>Available Until</span>
+            </div>
+            <input type="text" class="post-lend-time-input" id="postLendUntil" placeholder="e.g. Today, 5:00 PM" />
+          </div>
+
+        </div>
+
         <!-- BOX-only fields (hidden by default) -->
         <div class="post-box-fields" id="postBoxFields" style="display: none;">
           <div class="post-location">
@@ -186,21 +236,59 @@
     const regularLocation = document.getElementById('postRegularLocation');
     const titleInput = document.getElementById('postTitleInput');
 
+    const lendFields = document.getElementById('postLendFields');
+
     function updateFieldsForCategory(cat) {
       if (cat === 'box') {
         boxFields.style.display = '';
+        lendFields.style.display = 'none';
         regularLocation.style.display = 'none';
         titleInput.placeholder = 'Item Name (e.g. Black Water Bottle)';
       } else if (cat === 'announce') {
         boxFields.style.display = 'none';
+        lendFields.style.display = 'none';
         regularLocation.style.display = 'none';
         titleInput.placeholder = 'Announcement Title';
+      } else if (cat === 'lend') {
+        boxFields.style.display = 'none';
+        lendFields.style.display = '';
+        regularLocation.style.display = '';
+        titleInput.placeholder = 'Item Name (e.g. Scientific Calculator)';
       } else {
         boxFields.style.display = 'none';
+        lendFields.style.display = 'none';
         regularLocation.style.display = '';
         titleInput.placeholder = 'Title (Item Name)';
       }
     }
+
+    /* ── Price toggle (Free / With Fee) ── */
+    const priceFreeBtn = document.getElementById('priceFreeBtn');
+    const pricePaidBtn = document.getElementById('pricePaidBtn');
+    const priceWrap = document.getElementById('postPriceWrap');
+    const priceInput = document.getElementById('postPriceInput');
+
+    priceFreeBtn.addEventListener('click', () => {
+      priceFreeBtn.classList.add('active');
+      pricePaidBtn.classList.remove('active');
+      priceWrap.style.display = 'none';
+      priceInput.value = '';
+    });
+
+    pricePaidBtn.addEventListener('click', () => {
+      pricePaidBtn.classList.add('active');
+      priceFreeBtn.classList.remove('active');
+      priceWrap.style.display = '';
+      setTimeout(() => priceInput.focus(), 80);
+    });
+
+    /* ── Return policy chips ── */
+    document.querySelectorAll('.post-lend-chip').forEach(chip => {
+      chip.addEventListener('click', () => {
+        document.querySelectorAll('.post-lend-chip').forEach(c => c.classList.remove('active'));
+        chip.classList.add('active');
+      });
+    });
 
     /* ── Pill click ── */
     pills.forEach(pill => {

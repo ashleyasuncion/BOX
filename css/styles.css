@@ -5928,3 +5928,312 @@ CHAT — Message Bubbles (conversation)
 .signup-login-link a:hover {
   text-decoration: underline;
 }
+
+/* ══════════════════════════════════════
+   LEND POST — Info Card
+   ══════════════════════════════════════ */
+
+.pv-lend-info {
+  background: #F0F4FF;
+  border: 0.5px solid #C8D6FF;
+  border-radius: 14px;
+  padding: 14px 16px;
+  margin-bottom: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.pv-lend-info-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.pv-lend-info-row>i {
+  font-size: 18px;
+  color: #0044CC;
+  flex-shrink: 0;
+}
+
+.pv-lend-info-label {
+  font-size: 10px;
+  font-weight: 600;
+  color: #AAA;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+}
+
+.pv-lend-info-value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1A1A1A;
+}
+
+.pv-lend-info-free {
+  color: #0000FF;
+  font-weight: 700;
+}
+
+.pv-lend-info-price {
+  color: #5BA83A;
+  font-weight: 700;
+}
+
+/* ══════════════════════════════════════
+   FEED CARD — Price Tag (inline)
+   ══════════════════════════════════════ */
+
+.card-price-tag {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  margin-bottom: 8px;
+  padding: 4px 12px;
+  border-radius: 8px;
+  background: #E8EEFF;
+  border: 0.5px solid #C8D6FF;
+}
+
+.card-price-free {
+  font-size: 14px;
+  font-weight: 700;
+  color: #0000FF;
+}
+
+.card-price-amount {
+  font-size: 14px;
+  font-weight: 700;
+  color: #5BA83A;
+}
+
+.card-price-label {
+  font-size: 11px;
+  font-weight: 500;
+  color: #888;
+}
+
+/* ── Price tag green variant (paid) ── */
+.card-price-tag-paid {
+  background: #EAF3DE;
+  border-color: #D4EDBA;
+}
+
+/* ══════════════════════════════════════
+   POST PAGE — Lend Fields
+   ══════════════════════════════════════ */
+
+.post-lend-fields {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 14px;
+  background: #F0F4FF;
+  border: 0.5px solid #C8D6FF;
+  border-radius: 14px;
+}
+
+/* ── Price toggle ── */
+.post-price-toggle {
+  display: flex;
+  gap: 8px;
+}
+
+.post-price-option {
+  flex: 1;
+  height: 44px;
+  border: 1.5px solid #D6D4CE;
+  border-radius: 12px;
+  background: #fff;
+  color: #888;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  transition: all 0.15s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.post-price-option i {
+  font-size: 18px;
+}
+
+.post-price-option:hover {
+  background: #F5F4F0;
+  border-color: #BBB;
+  color: #555;
+}
+
+.post-price-option.active[data-price="free"] {
+  background: #E8EEFF;
+  border-color: #0044CC;
+  color: #0044CC;
+}
+
+.post-price-option.active[data-price="paid"] {
+  background: #EAF3DE;
+  border-color: #5BA83A;
+  color: #5BA83A;
+}
+
+/* ── Price input ── */
+.post-price-input-wrap {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: lend-field-in 0.2s ease;
+}
+
+@keyframes lend-field-in {
+  from {
+    opacity: 0;
+    transform: translateY(-6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.post-price-input-group {
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border: 1.5px solid #D6D4CE;
+  border-radius: 12px;
+  overflow: hidden;
+  transition: border-color 0.15s;
+}
+
+.post-price-input-group:focus-within {
+  border-color: #5BA83A;
+}
+
+.post-price-currency {
+  padding: 0 4px 0 14px;
+  font-size: 20px;
+  font-weight: 700;
+  color: #5BA83A;
+  flex-shrink: 0;
+}
+
+.post-price-input {
+  flex: 1;
+  height: 48px;
+  border: none;
+  outline: none;
+  background: none;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #1A1A1A;
+  padding: 0 14px 0 4px;
+}
+
+.post-price-input::placeholder {
+  color: #CCC;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+/* Remove number input arrows */
+.post-price-input::-webkit-outer-spin-button,
+.post-price-input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.post-price-input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.post-price-hint {
+  font-size: 11px;
+  font-weight: 500;
+  color: #AAA;
+  padding-left: 4px;
+}
+
+/* ── Lend field sections ── */
+.post-lend-field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.post-lend-field-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #0044CC;
+}
+
+.post-lend-field-label i {
+  font-size: 15px;
+}
+
+/* ── Return policy chips ── */
+.post-lend-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.post-lend-chip {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 14px;
+  background: #fff;
+  border: 1px solid #D6D4CE;
+  border-radius: 60px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #888;
+  cursor: pointer;
+  transition: all 0.12s ease;
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.post-lend-chip:hover {
+  background: #F5F4F0;
+  border-color: #BBB;
+  color: #555;
+}
+
+.post-lend-chip.active {
+  background: #0044CC;
+  border-color: #0044CC;
+  color: #fff;
+}
+
+/* ── Available until input ── */
+.post-lend-time-input {
+  width: 100%;
+  height: 40px;
+  background: #fff;
+  border: 1px solid #D6D4CE;
+  border-radius: 10px;
+  padding: 0 14px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  color: #1A1A1A;
+  outline: none;
+  transition: border-color 0.15s;
+}
+
+.post-lend-time-input::placeholder {
+  color: #AAA;
+  font-weight: 400;
+}
+
+.post-lend-time-input:focus {
+  border-color: #0044CC;
+}

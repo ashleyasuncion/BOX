@@ -43,29 +43,23 @@
       <!-- Overflow menu -->
       <div class="pv-overflow-backdrop" id="pvOverflowBackdrop"></div>
       <div class="pv-overflow-menu" id="pvOverflowMenu">
-
         <button class="pv-overflow-item" id="overflowSaveImage">
           <i class="ti ti-photo-down"></i>
           <span>Save Image</span>
         </button>
-
         <button class="pv-overflow-item" id="overflowCopyLink">
           <i class="ti ti-link"></i>
           <span>Copy Link</span>
         </button>
-
         <button class="pv-overflow-item" id="overflowHide">
           <i class="ti ti-eye-off"></i>
           <span>Hide Post</span>
         </button>
-
         <div class="pv-overflow-divider"></div>
-
         <button class="pv-overflow-item overflow-danger" id="overflowReport">
           <i class="ti ti-flag"></i>
           <span>Report</span>
         </button>
-
       </div>
 
       <!-- Scrollable content -->
@@ -102,8 +96,50 @@
               <div class="pv-user-time">9:15 AM</div>
             </div>
           </div>
-          <h1 class="pv-title">Calculator</h1>
-          <p class="pv-desc">I have a spare calculator anyone can borrow — just return it after your class!</p>
+          <h1 class="pv-title">Scientific Calculator</h1>
+
+          <!-- Free tag -->
+          <div class="pv-price pv-price-free">
+            <span class="pv-price-amount-free">FREE</span>
+            <span class="pv-price-label">no lending fee</span>
+          </div>
+
+          <p class="pv-desc">I have a spare Casio fx-991ES scientific calculator that anyone can borrow for free. Just
+            return it after your class or exam! I'll be at the 2nd floor study area until 5PM. DM me here or just come
+            find me — I'm wearing a yellow hoodie.</p>
+
+          <!-- Lend info card -->
+          <div class="pv-lend-info">
+            <div class="pv-lend-info-row">
+              <i class="ti ti-calculator"></i>
+              <div>
+                <div class="pv-lend-info-label">Item</div>
+                <div class="pv-lend-info-value">Casio fx-991ES Scientific Calculator</div>
+              </div>
+            </div>
+            <div class="pv-lend-info-row">
+              <i class="ti ti-coin-off"></i>
+              <div>
+                <div class="pv-lend-info-label">Lending Fee</div>
+                <div class="pv-lend-info-value pv-lend-info-free">FREE — no charge</div>
+              </div>
+            </div>
+            <div class="pv-lend-info-row">
+              <i class="ti ti-clock"></i>
+              <div>
+                <div class="pv-lend-info-label">Available Until</div>
+                <div class="pv-lend-info-value">Today, 5:00 PM</div>
+              </div>
+            </div>
+            <div class="pv-lend-info-row">
+              <i class="ti ti-refresh"></i>
+              <div>
+                <div class="pv-lend-info-label">Return Policy</div>
+                <div class="pv-lend-info-value">Return after class/exam</div>
+              </div>
+            </div>
+          </div>
+
           <div class="pv-location">
             <i class="ti ti-map-pin"></i>
             <span>2nd Floor Study Area</span>
@@ -118,7 +154,7 @@
           <i class="ti ti-message-circle"></i>
           <span>Comment</span>
         </a>
-        <button class="pv-bottom-btn pv-bottom-share">
+        <button class="pv-bottom-btn pv-bottom-share share-trigger">
           <i class="ti ti-share"></i>
           <span>Share</span>
         </button>
@@ -145,11 +181,60 @@
           <div class="pv-lend-profile">
             <div class="pv-lend-avatar">An</div>
             <div class="pv-lend-name">Anna</div>
-            <div class="pv-lend-sub">is lending a <strong>Calculator</strong></div>
+            <div class="pv-lend-sub">is lending a <strong>Scientific Calculator</strong> for <strong>FREE</strong></div>
           </div>
           <div class="pv-lend-chat-bar">
             <input type="text" class="pv-lend-chat-input" placeholder="Borrow from Anna" />
             <button class="pv-lend-chat-send"><i class="ti ti-send"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- ═══ Share Overlay ═══ -->
+      <div class="share-overlay" id="shareOverlay">
+        <div class="share-overlay-backdrop" id="shareBackdrop"></div>
+        <div class="share-panel">
+          <div class="share-panel-header">
+            <div class="share-panel-title">Share Post</div>
+            <button class="share-panel-close" id="shareClose">
+              <i class="ti ti-x"></i>
+            </button>
+          </div>
+          <div class="share-preview">
+            <div class="share-preview-icon">
+              <i class="ti ti-calculator"></i>
+            </div>
+            <div class="share-preview-body">
+              <div class="share-preview-title">Scientific Calculator</div>
+              <div class="share-preview-sub">by Anna · 2nd Floor Study Area</div>
+            </div>
+            <div class="share-preview-flag share-preview-flag-lend">Lend</div>
+          </div>
+          <div class="share-apps">
+            <a href="share-fb.html?from=home&post=post4" class="share-app" id="shareFbLink">
+              <div class="share-app-icon share-app-icon-fb"><i class="ti ti-brand-facebook"></i></div>
+              <span class="share-app-label">Messenger</span>
+            </a>
+            <a href="share-ig.html?from=home&post=post4" class="share-app" id="shareIgLink">
+              <div class="share-app-icon share-app-icon-ig"><i class="ti ti-brand-instagram"></i></div>
+              <span class="share-app-label">Instagram</span>
+            </a>
+            <div class="share-app">
+              <div class="share-app-icon share-app-icon-x"><i class="ti ti-brand-x"></i></div>
+              <span class="share-app-label">X</span>
+            </div>
+            <div class="share-app" id="shareCopyIcon">
+              <div class="share-app-icon share-app-icon-copy"><i class="ti ti-link"></i></div>
+              <span class="share-app-label">Copy Link</span>
+            </div>
+            <div class="share-app">
+              <div class="share-app-icon share-app-icon-more"><i class="ti ti-dots"></i></div>
+              <span class="share-app-label">More</span>
+            </div>
+          </div>
+          <div class="share-link-bar">
+            <span class="share-link-url">plpbox.app/post/calculator-d4e5f6</span>
+            <button class="share-link-copy" id="shareCopyBtn">Copy</button>
           </div>
         </div>
       </div>
@@ -164,12 +249,13 @@
     const params = new URLSearchParams(window.location.search);
     const from = params.get('from') || 'home';
 
-    const pageMap = {
+    const pageMap = window.GLOBAL_PAGE_MAP || {
       home: 'main-home.html',
       lost: 'main-lost.html',
       found: 'main-found.html',
       lend: 'main-lend.html',
-      borrow: 'main-borrow.html'
+      borrow: 'main-borrow.html',
+      box: 'box.html'
     };
 
     /* ── Back button ── */
@@ -180,6 +266,10 @@
 
     /* ── Chat header icon ── */
     document.getElementById('pvChat').href = `post4-chat.html?from=${from}`;
+
+    /* ── Share links ── */
+    document.getElementById('shareFbLink').href = `share-fb.html?from=${from}&post=post4`;
+    document.getElementById('shareIgLink').href = `share-ig.html?from=${from}&post=post4`;
 
     /* ── Carousel ── */
     const track = document.getElementById('pvTrack');
@@ -216,19 +306,43 @@
     borrowBd.addEventListener('click', () => borrowOv.classList.remove('active'));
     borrowClose.addEventListener('click', () => borrowOv.classList.remove('active'));
 
-    document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') borrowOv.classList.remove('active');
-    });
-
-    /* ── Borrow chat send → go to chat page ── */
     document.querySelector('.pv-lend-chat-send').addEventListener('click', () => {
       window.location.href = `post4-chat.html?from=${from}`;
     });
 
-    /* ══════════════════════════════════════
-   OVERFLOW MENU
-   ══════════════════════════════════════ */
+    /* ── Share overlay ── */
+    const shareOv = document.getElementById('shareOverlay');
+    const shareBd = document.getElementById('shareBackdrop');
+    const shareCloseBtn = document.getElementById('shareClose');
+    const shareCopyBtn = document.getElementById('shareCopyBtn');
 
+    document.querySelectorAll('.share-trigger').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        e.preventDefault();
+        shareOv.classList.add('active');
+      });
+    });
+
+    shareBd.addEventListener('click', () => shareOv.classList.remove('active'));
+    shareCloseBtn.addEventListener('click', () => shareOv.classList.remove('active'));
+
+    shareCopyBtn.addEventListener('click', () => {
+      navigator.clipboard.writeText(
+        document.querySelector('.share-link-url').textContent
+      ).catch(() => { });
+      shareCopyBtn.textContent = 'Copied!';
+      shareCopyBtn.classList.add('copied');
+      setTimeout(() => {
+        shareCopyBtn.textContent = 'Copy';
+        shareCopyBtn.classList.remove('copied');
+      }, 2000);
+    });
+
+    document.getElementById('shareCopyIcon').addEventListener('click', () => {
+      shareCopyBtn.click();
+    });
+
+    /* ── Overflow menu ── */
     const overflowBtn = document.getElementById('pvOverflowBtn');
     const overflowMenu = document.getElementById('pvOverflowMenu');
     const overflowBackdrop = document.getElementById('pvOverflowBackdrop');
@@ -250,17 +364,14 @@
 
     overflowBackdrop.addEventListener('click', closeOverflow);
 
-    /* ── Save Image ── */
     document.getElementById('overflowSaveImage').addEventListener('click', () => {
       closeOverflow();
-      /* Placeholder — in production this would trigger image download */
       const btn = document.getElementById('overflowSaveImage');
       const original = btn.innerHTML;
       btn.innerHTML = '<i class="ti ti-check"></i><span>Saved!</span>';
       setTimeout(() => { btn.innerHTML = original; }, 1800);
     });
 
-    /* ── Copy Link ── */
     document.getElementById('overflowCopyLink').addEventListener('click', () => {
       closeOverflow();
       navigator.clipboard.writeText(window.location.href).catch(() => { });
@@ -270,18 +381,14 @@
       setTimeout(() => { btn.innerHTML = original; }, 1800);
     });
 
-    /* ── Hide Post ── */
     document.getElementById('overflowHide').addEventListener('click', () => {
       closeOverflow();
-      /* Navigate back — simulates hiding and returning to feed */
-      history.back();
+      window.location.href = pageMap[from] || 'main-home.html';
     });
 
-    /* ── Report ── */
     document.getElementById('overflowReport').addEventListener('click', () => {
       closeOverflow();
       const btn = document.getElementById('overflowReport');
-      const original = btn.innerHTML;
       btn.innerHTML = '<i class="ti ti-flag"></i><span>Reported</span>';
       btn.style.opacity = '0.5';
       btn.style.pointerEvents = 'none';
@@ -289,7 +396,11 @@
 
     /* ── Escape key ── */
     document.addEventListener('keydown', e => {
-      if (e.key === 'Escape') closeOverflow();
+      if (e.key === 'Escape') {
+        closeOverflow();
+        borrowOv.classList.remove('active');
+        shareOv.classList.remove('active');
+      }
     });
   </script>
 
