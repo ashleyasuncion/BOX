@@ -191,13 +191,13 @@ document.addEventListener('DOMContentLoaded', () => {
   const STORIES = [
     { img: 'images/stories/story-box.png', link: 'box.html' },
     { img: 'images/stories/story-01.png', link: 'box-post1.html' },
-    { img: 'images/stories/story-01.png' },
     { img: 'images/stories/story-02.png' },
     { img: 'images/stories/story-03.png' },
     { img: 'images/stories/story-04.png' },
     { img: 'images/stories/story-05.png' },
     { img: 'images/stories/story-06.png' },
-    { img: 'images/stories/story-07.png' }
+    { img: 'images/stories/story-07.png' },
+    { img: 'images/stories/story-08.png' }
   ];
 
   const strip = document.getElementById('storiesStrip');
