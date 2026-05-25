@@ -232,6 +232,249 @@
 
         </div>
 
+        <!-- ════════════════════════════════════
+     USER MANAGEMENT SECTION
+     ════════════════════════════════════ -->
+        <div class="admin-users-section">
+
+          <!-- Section header -->
+          <div class="admin-users-header">
+            <div class="admin-users-title">
+              <i class="ti ti-users"></i>
+              <span>User Management</span>
+            </div>
+            <div class="admin-users-count">5 users</div>
+          </div>
+
+          <!-- Search bar -->
+          <div class="admin-users-search">
+            <i class="ti ti-search"></i>
+            <input type="text" class="admin-users-search-input" id="adminUserSearch" placeholder="Search users…"
+              autocomplete="off" />
+          </div>
+
+          <!-- Filter tabs -->
+          <div class="admin-users-tabs">
+            <button class="admin-users-tab active" data-filter="all">All</button>
+            <button class="admin-users-tab" data-filter="active">Active</button>
+            <button class="admin-users-tab" data-filter="blocked">Blocked</button>
+          </div>
+
+          <!-- User list -->
+          <div class="admin-users-list" id="adminUsersList">
+
+            <!-- User 1 — Yves Santos (student) -->
+            <div class="admin-user-card" data-status="active" data-name="yves santos">
+              <div class="admin-user-avatar">Y</div>
+              <div class="admin-user-info">
+                <div class="admin-user-name">Yves Santos</div>
+                <div class="admin-user-meta">
+                  <span class="admin-user-id">2024-00123</span>
+                  <span class="admin-user-dot">·</span>
+                  <span class="admin-user-course">BSBA 3A</span>
+                </div>
+                <div class="admin-user-status-row">
+                  <span class="admin-user-badge admin-badge-active">
+                    <i class="ti ti-circle-filled"></i> Active
+                  </span>
+                  <span class="admin-user-posts">12 posts</span>
+                </div>
+              </div>
+              <button class="admin-block-btn" data-user="yves-santos" data-name="Yves Santos" data-blocked="false">
+                <i class="ti ti-lock"></i>
+                <span>Block</span>
+              </button>
+            </div>
+
+            <!-- User 2 — Leo Santos (lost.user) -->
+            <div class="admin-user-card" data-status="active" data-name="leo santos">
+              <div class="admin-user-avatar" style="background: linear-gradient(135deg,#E24B4A,#FF6B6B); color:#fff;">L
+              </div>
+              <div class="admin-user-info">
+                <div class="admin-user-name">Leo Santos</div>
+                <div class="admin-user-meta">
+                  <span class="admin-user-id">2024-00124</span>
+                  <span class="admin-user-dot">·</span>
+                  <span class="admin-user-course">BSIT 2B</span>
+                </div>
+                <div class="admin-user-status-row">
+                  <span class="admin-user-badge admin-badge-active">
+                    <i class="ti ti-circle-filled"></i> Active
+                  </span>
+                  <span class="admin-user-posts">3 posts</span>
+                </div>
+              </div>
+              <button class="admin-block-btn" data-user="leo-santos" data-name="Leo Santos" data-blocked="false">
+                <i class="ti ti-lock"></i>
+                <span>Block</span>
+              </button>
+            </div>
+
+            <!-- User 3 — Faye Reyes (found.user) -->
+            <div class="admin-user-card" data-status="active" data-name="faye reyes">
+              <div class="admin-user-avatar" style="background: linear-gradient(135deg,#4CAF50,#81C784); color:#fff;">F
+              </div>
+              <div class="admin-user-info">
+                <div class="admin-user-name">Faye Reyes</div>
+                <div class="admin-user-meta">
+                  <span class="admin-user-id">2024-00125</span>
+                  <span class="admin-user-dot">·</span>
+                  <span class="admin-user-course">BSED 1A</span>
+                </div>
+                <div class="admin-user-status-row">
+                  <span class="admin-user-badge admin-badge-active">
+                    <i class="ti ti-circle-filled"></i> Active
+                  </span>
+                  <span class="admin-user-posts">5 posts</span>
+                </div>
+              </div>
+              <button class="admin-block-btn" data-user="faye-reyes" data-name="Faye Reyes" data-blocked="false">
+                <i class="ti ti-lock"></i>
+                <span>Block</span>
+              </button>
+            </div>
+
+            <!-- User 4 — Lance Cruz (lend.user) -->
+            <div class="admin-user-card" data-status="active" data-name="lance cruz">
+              <div class="admin-user-avatar" style="background: linear-gradient(135deg,#0044CC,#378ADD); color:#fff;">LC
+              </div>
+              <div class="admin-user-info">
+                <div class="admin-user-name">Lance Cruz</div>
+                <div class="admin-user-meta">
+                  <span class="admin-user-id">2024-00126</span>
+                  <span class="admin-user-dot">·</span>
+                  <span class="admin-user-course">BSBA 1C</span>
+                </div>
+                <div class="admin-user-status-row">
+                  <span class="admin-user-badge admin-badge-active">
+                    <i class="ti ti-circle-filled"></i> Active
+                  </span>
+                  <span class="admin-user-posts">7 posts</span>
+                </div>
+              </div>
+              <button class="admin-block-btn" data-user="lance-cruz" data-name="Lance Cruz" data-blocked="false">
+                <i class="ti ti-lock"></i>
+                <span>Block</span>
+              </button>
+            </div>
+
+            <!-- User 5 — Bea Mendoza (borrow.user) — pre-blocked for demo -->
+            <div class="admin-user-card" data-status="blocked" data-name="bea mendoza">
+              <div class="admin-user-avatar" style="background: linear-gradient(135deg,#F0A500,#FFD54F); color:#fff;">B
+              </div>
+              <div class="admin-user-info">
+                <div class="admin-user-name">Bea Mendoza</div>
+                <div class="admin-user-meta">
+                  <span class="admin-user-id">2024-00127</span>
+                  <span class="admin-user-dot">·</span>
+                  <span class="admin-user-course">BSBA 2A</span>
+                </div>
+                <div class="admin-user-status-row">
+                  <span class="admin-user-badge admin-badge-blocked">
+                    <i class="ti ti-circle-filled"></i> Blocked
+                  </span>
+                  <span class="admin-user-posts">2 posts</span>
+                </div>
+              </div>
+              <button class="admin-block-btn admin-block-btn-blocked" data-user="bea-mendoza" data-name="Bea Mendoza"
+                data-blocked="true">
+                <i class="ti ti-lock-open"></i>
+                <span>Unblock</span>
+              </button>
+            </div>
+
+          </div>
+
+        </div>
+
+        <!-- ════════════════════════════════════
+     BLOCK CONFIRMATION OVERLAY
+     ════════════════════════════════════ -->
+        <div class="admin-block-overlay" id="adminBlockOverlay">
+          <div class="admin-block-backdrop" id="adminBlockBackdrop"></div>
+          <div class="admin-block-panel" id="adminBlockPanel">
+
+            <button class="admin-block-close" id="adminBlockClose">
+              <i class="ti ti-x"></i>
+            </button>
+
+            <!-- Block state -->
+            <div id="blockConfirmView">
+              <div class="admin-block-panel-icon admin-block-panel-icon-block">
+                <i class="ti ti-lock"></i>
+              </div>
+              <h2 class="admin-block-panel-title">Block User?</h2>
+              <p class="admin-block-panel-sub">
+                You are about to block <strong id="blockTargetName">User</strong>.
+                They will no longer be able to access PLP Box.
+              </p>
+
+              <div class="admin-block-details">
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-eye-off"></i>
+                  <span>Their posts will be hidden from the feed</span>
+                </div>
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-message-off"></i>
+                  <span>They cannot send or receive messages</span>
+                </div>
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-login-2"></i>
+                  <span>They will be logged out immediately</span>
+                </div>
+              </div>
+
+              <div class="admin-block-actions">
+                <button class="admin-block-cancel-btn" id="adminBlockCancelBtn">
+                  Cancel
+                </button>
+                <button class="admin-block-confirm-btn" id="adminBlockConfirmBtn">
+                  <i class="ti ti-lock"></i>
+                  <span>Block User</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Unblock state -->
+            <div id="unblockConfirmView" style="display:none;">
+              <div class="admin-block-panel-icon admin-block-panel-icon-unblock">
+                <i class="ti ti-lock-open"></i>
+              </div>
+              <h2 class="admin-block-panel-title">Unblock User?</h2>
+              <p class="admin-block-panel-sub">
+                You are about to restore access for <strong id="unblockTargetName">User</strong>.
+                They will be able to use PLP Box again.
+              </p>
+
+              <div class="admin-block-details">
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-eye"></i>
+                  <span>Their posts will be visible in the feed again</span>
+                </div>
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-message"></i>
+                  <span>They can send and receive messages</span>
+                </div>
+                <div class="admin-block-detail-row">
+                  <i class="ti ti-login"></i>
+                  <span>They can log back into their account</span>
+                </div>
+              </div>
+
+              <div class="admin-block-actions">
+                <button class="admin-block-cancel-btn" id="adminUnblockCancelBtn">
+                  Cancel
+                </button>
+                <button class="admin-unblock-confirm-btn" id="adminUnblockConfirmBtn">
+                  <i class="ti ti-lock-open"></i>
+                  <span>Unblock User</span>
+                </button>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
         <!-- Posts section -->
         <div class="profile-posts-section">
 
@@ -632,6 +875,152 @@
         settingsOv.classList.remove('active');
       }
 
+    });
+
+    /* ══════════════════════════════════════
+   USER MANAGEMENT
+   ══════════════════════════════════════ */
+
+    const blockOverlay = document.getElementById('adminBlockOverlay');
+    const blockBackdrop = document.getElementById('adminBlockBackdrop');
+    const blockCloseBtn = document.getElementById('adminBlockClose');
+    const blockView = document.getElementById('blockConfirmView');
+    const unblockView = document.getElementById('unblockConfirmView');
+    const blockTargetName = document.getElementById('blockTargetName');
+    const unblockTargetName = document.getElementById('unblockTargetName');
+
+    let activeBlockBtn = null;
+
+    /* ── Open overlay ── */
+    function openBlockOverlay(btn) {
+      activeBlockBtn = btn;
+      const name = btn.dataset.name;
+      const isBlocked = btn.dataset.blocked === 'true';
+
+      if (isBlocked) {
+        blockView.style.display = 'none';
+        unblockView.style.display = 'block';
+        unblockTargetName.textContent = name;
+      } else {
+        blockView.style.display = 'block';
+        unblockView.style.display = 'none';
+        blockTargetName.textContent = name;
+      }
+
+      blockOverlay.classList.add('active');
+    }
+
+    /* ── Close overlay ── */
+    function closeBlockOverlay() {
+      blockOverlay.classList.remove('active');
+      activeBlockBtn = null;
+    }
+
+    blockBackdrop.addEventListener('click', closeBlockOverlay);
+    blockCloseBtn.addEventListener('click', closeBlockOverlay);
+
+    /* ── Block buttons ── */
+    document.querySelectorAll('.admin-block-btn').forEach(btn => {
+      btn.addEventListener('click', () => openBlockOverlay(btn));
+    });
+
+    /* ── Confirm BLOCK ── */
+    document.getElementById('adminBlockConfirmBtn').addEventListener('click', () => {
+      if (!activeBlockBtn) return;
+
+      const card = activeBlockBtn.closest('.admin-user-card');
+      const badge = card.querySelector('.admin-user-badge');
+      const name = activeBlockBtn.dataset.name;
+
+      /* Update card */
+      card.dataset.status = 'blocked';
+      card.style.background = '#FEF6F6';
+      card.style.borderColor = '#F5D5D5';
+      card.style.opacity = '0.85';
+
+      /* Update badge */
+      badge.className = 'admin-user-badge admin-badge-blocked';
+      badge.innerHTML = '<i class="ti ti-circle-filled"></i> Blocked';
+
+      /* Update button */
+      activeBlockBtn.dataset.blocked = 'true';
+      activeBlockBtn.classList.add('admin-block-btn-blocked');
+      activeBlockBtn.innerHTML = '<i class="ti ti-lock-open"></i><span>Unblock</span>';
+
+      closeBlockOverlay();
+    });
+
+    /* ── Cancel BLOCK ── */
+    document.getElementById('adminBlockCancelBtn').addEventListener('click', closeBlockOverlay);
+
+    /* ── Confirm UNBLOCK ── */
+    document.getElementById('adminUnblockConfirmBtn').addEventListener('click', () => {
+      if (!activeBlockBtn) return;
+
+      const card = activeBlockBtn.closest('.admin-user-card');
+      const badge = card.querySelector('.admin-user-badge');
+
+      /* Update card */
+      card.dataset.status = 'active';
+      card.style.background = '';
+      card.style.borderColor = '';
+      card.style.opacity = '';
+
+      /* Update badge */
+      badge.className = 'admin-user-badge admin-badge-active';
+      badge.innerHTML = '<i class="ti ti-circle-filled"></i> Active';
+
+      /* Update button */
+      activeBlockBtn.dataset.blocked = 'false';
+      activeBlockBtn.classList.remove('admin-block-btn-blocked');
+      activeBlockBtn.innerHTML = '<i class="ti ti-lock"></i><span>Block</span>';
+
+      closeBlockOverlay();
+    });
+
+    /* ── Cancel UNBLOCK ── */
+    document.getElementById('adminUnblockCancelBtn').addEventListener('click', closeBlockOverlay);
+
+    /* ══════════════════════════════════════
+       USER SEARCH
+       ══════════════════════════════════════ */
+
+    const userSearch = document.getElementById('adminUserSearch');
+    const userCards = document.querySelectorAll('.admin-user-card');
+
+    userSearch.addEventListener('input', () => {
+      const query = userSearch.value.toLowerCase().trim();
+
+      userCards.forEach(card => {
+        const name = card.dataset.name || '';
+        card.style.display = (!query || name.includes(query)) ? 'flex' : 'none';
+      });
+    });
+
+    /* ══════════════════════════════════════
+       USER FILTER TABS
+       ══════════════════════════════════════ */
+
+    const userTabs = document.querySelectorAll('.admin-users-tab');
+
+    userTabs.forEach(tab => {
+      tab.addEventListener('click', () => {
+        userTabs.forEach(t => t.classList.remove('active'));
+        tab.classList.add('active');
+
+        const filter = tab.dataset.filter;
+
+        userCards.forEach(card => {
+          const status = card.dataset.status;
+          const show = filter === 'all' || status === filter;
+          card.style.display = show ? 'flex' : 'none';
+        });
+      });
+    });
+
+    /* ── Escape ── */
+    document.addEventListener('keydown', e => {
+      if (e.key === 'Escape') closeBlockOverlay();
     });
   </script>
 

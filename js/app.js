@@ -25,32 +25,49 @@ document.addEventListener('DOMContentLoaded', () => {
     lost: 'main-lost.html'
   };
 
-  /* Redirect to login if no session (skip login/splash pages) */
+  /* Redirect to login if no session */
   const publicPages = ['login', 'splash'];
-
   if (!currentAccount && !publicPages.includes(activePage)) {
     window.location.href = 'login.html';
   }
+
+  /* ── Set active state & swap images ── */
   icons.forEach(icon => {
     const nav = icon.dataset.nav;
+    const img = icon.querySelector('img');
+    const isImageIcon = !!img;
 
     if (nav === activePage) {
-      icon.style.opacity = '1';
+      /* ── Active page ── */
+      icon.classList.add('active');
+      if (isImageIcon && img.dataset.active) {
+        img.src = img.dataset.active;
+      }
     } else {
-      icon.style.opacity = '0.35';
+      /* ── Inactive page ── */
+      icon.classList.remove('active');
+      if (isImageIcon && img.dataset.inactive) {
+        img.src = img.dataset.inactive;
+      }
     }
 
+    /* ── Click → navigate ── */
     icon.addEventListener('click', () => {
       if (nav === activePage) return;
       if (pages[nav]) window.location.href = pages[nav];
     });
 
+    /* ── Hover — show filled image (images only) ── */
     icon.addEventListener('mouseenter', () => {
-      if (nav !== activePage) icon.style.opacity = '0.7';
+      if (nav !== activePage && isImageIcon && img.dataset.active) {
+        img.src = img.dataset.active;
+      }
     });
 
     icon.addEventListener('mouseleave', () => {
-      if (nav !== activePage) icon.style.opacity = '0.35';
+      if (nav !== activePage && isImageIcon && img.dataset.inactive) {
+        img.src = img.dataset.inactive;
+      }
     });
   });
 

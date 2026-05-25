@@ -22,15 +22,37 @@
 
     <div class="screen">
 
-      <!-- Top bar -->
       <div class="topbar">
-        <div class="topbar-icon active-home" data-nav="home" title="Home"><i class="ti ti-home"></i></div>
-        <div class="topbar-icon active-borrow" data-nav="borrow" title="Borrow"><i class="ti ti-hand-stop"></i></div>
-        <div class="topbar-icon active-lend" data-nav="lend" title="Lend"><i class="ti ti-hand-finger"></i></div>
-        <div class="topbar-icon active-found" data-nav="found" title="Found"><i class="ti ti-circle-check"></i></div>
-        <div class="topbar-icon active-lost" data-nav="lost" title="Lost"><i class="ti ti-map-search"></i></div>
-        <div class="topbar-search" title="Search"><i class="ti ti-search"></i></div>
+        <!-- Home — font icon (unchanged) -->
+        <div class="topbar-icon" data-nav="home" title="Home">
+          <i class="ti ti-home"></i>
+        </div>
+
+        <!-- Images -->
+        <div class="topbar-icon" data-nav="borrow" title="Borrow">
+          <img src="images/nav/nav-borrow.png" data-inactive="images/nav/nav-borrow.png"
+            data-active="images/nav/nav-borrow-active.png" alt="Borrow" draggable="false" />
+        </div>
+        <div class="topbar-icon" data-nav="lend" title="Lend">
+          <img src="images/nav/nav-lend.png" data-inactive="images/nav/nav-lend.png"
+            data-active="images/nav/nav-lend-active.png" alt="Lend" draggable="false" />
+        </div>
+        <div class="topbar-icon" data-nav="found" title="Found">
+          <img src="images/nav/nav-found.png" data-inactive="images/nav/nav-found.png"
+            data-active="images/nav/nav-found-active.png" alt="Found" draggable="false" />
+        </div>
+        <div class="topbar-icon" data-nav="lost" title="Lost">
+          <img src="images/nav/nav-lost.png" data-inactive="images/nav/nav-lost.png"
+            data-active="images/nav/nav-lost-active.png" alt="Lost" draggable="false" />
+        </div>
+
+        <!-- Search — font icon (unchanged) -->
+        <div class="topbar-search" title="Search">
+          <i class="ti ti-search"></i>
+        </div>
       </div>
+
+
 
       <!-- Composer -->
       <div class="composer">

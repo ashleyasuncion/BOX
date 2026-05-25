@@ -36,96 +36,112 @@
         </div>
       </div>
 
+      <!-- ════════════════════════════════════
+           TRANSACTION STATUS TRACKER
+           ════════════════════════════════════ -->
+      <div class="txn-tracker" id="txnTracker">
+
+        <!-- Item context -->
+        <div class="txn-item-bar">
+          <div class="txn-item-icon">
+            <i class="ti ti-battery-charging"></i>
+          </div>
+          <div class="txn-item-info">
+            <div class="txn-item-name">Power Bank</div>
+            <div class="txn-item-price">₱150 lending fee</div>
+          </div>
+          <div class="txn-status-pill txn-pill-pending" id="txnStatusPill">
+            <i class="ti ti-clock"></i>
+            <span>Pending</span>
+          </div>
+        </div>
+
+        <!-- Progress steps -->
+        <div class="txn-progress">
+          <div class="txn-step active" data-step="1">
+            <div class="txn-step-dot"><i class="ti ti-check"></i></div>
+            <span>Requested</span>
+          </div>
+          <div class="txn-step-line"></div>
+          <div class="txn-step" data-step="2">
+            <div class="txn-step-dot"><i class="ti ti-check"></i></div>
+            <span>Accepted</span>
+          </div>
+          <div class="txn-step-line"></div>
+          <div class="txn-step" data-step="3">
+            <div class="txn-step-dot"><i class="ti ti-check"></i></div>
+            <span>Handed</span>
+          </div>
+          <div class="txn-step-line"></div>
+          <div class="txn-step" data-step="4">
+            <div class="txn-step-dot"><i class="ti ti-check"></i></div>
+            <span>Returned</span>
+          </div>
+        </div>
+
+        <!-- Action button -->
+        <div class="txn-action-bar" id="txnActionBar">
+          <button class="txn-action-btn" id="txnActionBtn" disabled>
+            <i class="ti ti-clock"></i>
+            <span>Waiting for Daniel to accept…</span>
+          </button>
+        </div>
+
+      </div>
+
       <!-- Chat body -->
       <div class="chat-body" id="chatBody">
 
-        <!-- Profile intro -->
         <div class="chat-profile-intro">
           <div class="chat-profile-avatar">D</div>
           <div class="chat-profile-name">Daniel</div>
-          <div class="chat-profile-sub">is lending a <strong>Power Bank</strong> for <strong>₱150</strong></div>
+          <div class="chat-profile-sub">
+            is lending a <strong>Power Bank</strong> for <strong>₱150</strong>
+          </div>
         </div>
 
         <!-- Date divider -->
         <div class="chat-date-divider"><span>Today</span></div>
 
-        <!-- Outgoing: user initiates -->
+        <!-- Borrow request message -->
         <div class="chat-msg chat-msg-out">
           <div class="chat-bubble chat-bubble-out">
-            <p>Hey Daniel! I saw your post about the power bank. Is it still available?</p>
-            <span class="chat-bubble-time">10:12 AM</span>
+            <p>Hi Daniel! Can I borrow the Power Bank?</p>
+            <span class="chat-bubble-time">8:35 AM</span>
           </div>
         </div>
 
-        <!-- Incoming: Daniel replies -->
-        <div class="chat-msg chat-msg-in">
-          <div class="chat-msg-avatar">D</div>
-          <div class="chat-bubble chat-bubble-in">
-            <p>Hey! Yeah it's still available 🔋 10,000mAh with USB-C and Lightning cables</p>
-            <span class="chat-bubble-time">10:14 AM</span>
-          </div>
-        </div>
-
-        <!-- Outgoing -->
-        <div class="chat-msg chat-msg-out">
-          <div class="chat-bubble chat-bubble-out">
-            <p>Nice! I need it for the rest of the day. Where can I pick it up?</p>
-            <span class="chat-bubble-time">10:15 AM</span>
-          </div>
-        </div>
-
-        <!-- Incoming -->
-        <div class="chat-msg chat-msg-in">
-          <div class="chat-msg-avatar">D</div>
-          <div class="chat-bubble chat-bubble-in">
-            <p>I'm at the Main Building Lobby rn. Just return it before 6pm if that's cool</p>
-            <span class="chat-bubble-time">10:16 AM</span>
-          </div>
-        </div>
-
-        <!-- Outgoing -->
-        <div class="chat-msg chat-msg-out">
-          <div class="chat-bubble chat-bubble-out">
-            <p>That works! So the lending fee is ₱150 right?</p>
-            <span class="chat-bubble-time">10:18 AM</span>
-          </div>
-        </div>
-
-        <!-- Incoming -->
-        <div class="chat-msg chat-msg-in">
-          <div class="chat-msg-avatar">D</div>
-          <div class="chat-bubble chat-bubble-in">
-            <p>Yep ₱150 flat. You can send it via GCash para madali 👍</p>
-            <span class="chat-bubble-time">10:19 AM</span>
-          </div>
-        </div>
-
-        <!-- Outgoing -->
-        <div class="chat-msg chat-msg-out">
-          <div class="chat-bubble chat-bubble-out">
-            <p>Sure, let me send it now!</p>
-            <span class="chat-bubble-time">10:20 AM</span>
-          </div>
-        </div>
-
-        <!-- Payment notice -->
-        <div class="chat-payment-notice">
-          <i class="ti ti-info-circle"></i>
-          <p>Daniel is requesting <strong>₱150.00</strong> for the Power Bank lending fee. Tap the button below to pay
-            via GCash.</p>
+        <!-- System message -->
+        <div class="txn-system-msg">
+          <i class="ti ti-send"></i>
+          <span>Borrow request sent</span>
         </div>
 
       </div>
 
-      <!-- GCash pay button bar -->
-      <div class="gcash-pay-bar" id="gcashPayBar">
+      <!-- GCash pay bar -->
+      <div class="gcash-pay-bar">
         <button class="gcash-pay-trigger" id="gcashPayBtn">
           <div class="gcash-pay-trigger-logo">
             <span class="gcash-logo-text">G</span>
           </div>
           <div class="gcash-pay-trigger-info">
-            <span class="gcash-pay-trigger-label">Pay with GCash</span>
+            <span class="gcash-pay-trigger-label">Pay lending fee via</span>
             <span class="gcash-pay-trigger-amount">₱150.00</span>
+          </div>
+          <i class="ti ti-chevron-right"></i>
+        </button>
+      </div>
+
+      <!-- Feedback trigger bar — HIDDEN by default -->
+      <div class="feedback-trigger-bar" id="feedbackTriggerBar" style="display: none;">
+        <button class="feedback-trigger-btn" id="feedbackTriggerBtn">
+          <div class="feedback-trigger-icon">
+            <i class="ti ti-star"></i>
+          </div>
+          <div class="feedback-trigger-info">
+            <span class="feedback-trigger-label">Transaction complete!</span>
+            <span class="feedback-trigger-text">Leave Feedback for Daniel</span>
           </div>
           <i class="ti ti-chevron-right"></i>
         </button>
@@ -133,95 +149,69 @@
 
       <!-- Chat input -->
       <div class="chat-input-bar">
-        <input type="text" class="chat-input" placeholder="Borrow from Daniel" />
+        <input type="text" class="chat-input" placeholder="Message Daniel…" />
         <button class="chat-send"><i class="ti ti-send"></i></button>
       </div>
 
       <!-- ════════════════════════════════════
-           GCASH PAYMENT OVERLAY
+           GCASH OVERLAY — Payment
            ════════════════════════════════════ -->
       <div class="gcash-overlay" id="gcashOverlay">
         <div class="gcash-overlay-backdrop" id="gcashBackdrop"></div>
         <div class="gcash-panel">
 
-          <!-- GCash header -->
           <div class="gcash-header">
-            <button class="gcash-close" id="gcashClose">
-              <i class="ti ti-x"></i>
-            </button>
+            <button class="gcash-close" id="gcashClose"><i class="ti ti-x"></i></button>
             <div class="gcash-header-brand">
               <div class="gcash-brand-logo">G</div>
               <span class="gcash-brand-text">GCash</span>
             </div>
-            <div class="gcash-header-sub">Payment Confirmation</div>
+            <div class="gcash-header-sub">Send Payment</div>
           </div>
 
-          <!-- Payment details -->
           <div class="gcash-body">
-
-            <!-- Amount -->
             <div class="gcash-amount-section">
-              <div class="gcash-amount-label">Total Amount</div>
+              <div class="gcash-amount-label">Amount</div>
               <div class="gcash-amount-value">₱150.00</div>
             </div>
 
-            <!-- Transaction details -->
             <div class="gcash-details">
-
               <div class="gcash-detail-row">
-                <span class="gcash-detail-label">Sending to</span>
-                <span class="gcash-detail-value">Daniel R.</span>
+                <span class="gcash-detail-label">To</span>
+                <span class="gcash-detail-value">Daniel</span>
               </div>
-
-              <div class="gcash-detail-row">
-                <span class="gcash-detail-label">Mobile Number</span>
-                <span class="gcash-detail-value">0917 •••• 892</span>
-              </div>
-
               <div class="gcash-detail-divider"></div>
-
               <div class="gcash-detail-row">
-                <span class="gcash-detail-label">Item</span>
-                <span class="gcash-detail-value">Power Bank (Lend)</span>
+                <span class="gcash-detail-label">Purpose</span>
+                <span class="gcash-detail-value">Lending Fee — Power Bank</span>
               </div>
-
-              <div class="gcash-detail-row">
-                <span class="gcash-detail-label">Lending Fee</span>
-                <span class="gcash-detail-value">₱150.00</span>
-              </div>
-
+              <div class="gcash-detail-divider"></div>
               <div class="gcash-detail-row">
                 <span class="gcash-detail-label">Service Fee</span>
                 <span class="gcash-detail-value gcash-free">FREE</span>
               </div>
-
               <div class="gcash-detail-divider"></div>
-
               <div class="gcash-detail-row">
-                <span class="gcash-detail-label">Reference No.</span>
-                <span class="gcash-detail-value gcash-ref">7824 0915 3847</span>
+                <span class="gcash-detail-label">Ref No.</span>
+                <span class="gcash-detail-value gcash-ref">7892 4561 2309</span>
               </div>
-
             </div>
 
-            <!-- Source of funds -->
             <div class="gcash-source">
               <div class="gcash-source-icon">
-                <span class="gcash-logo-text">G</span>
+                <span class="gcash-logo-text" style="font-size:14px;">G</span>
               </div>
               <div class="gcash-source-info">
-                <div class="gcash-source-label">Source of Funds</div>
-                <div class="gcash-source-value">GCash Balance</div>
+                <div class="gcash-source-label">Source</div>
+                <div class="gcash-source-value">GCash Wallet</div>
               </div>
               <div class="gcash-source-balance">₱1,250.00</div>
             </div>
-
           </div>
 
-          <!-- GCash footer -->
           <div class="gcash-footer">
             <button class="gcash-confirm-btn" id="gcashConfirmBtn">
-              <span>Confirm Payment</span>
+              <span>Confirm ₱150.00</span>
             </button>
             <div class="gcash-footer-note">
               <i class="ti ti-lock"></i>
@@ -233,37 +223,118 @@
       </div>
 
       <!-- ════════════════════════════════════
-           GCASH SUCCESS OVERLAY
+           GCASH OVERLAY — Success
            ════════════════════════════════════ -->
       <div class="gcash-overlay" id="gcashSuccessOverlay">
         <div class="gcash-overlay-backdrop" id="gcashSuccessBackdrop"></div>
         <div class="gcash-success-panel">
-
-          <div class="gcash-success-icon">
-            <i class="ti ti-circle-check"></i>
-          </div>
-
-          <div class="gcash-success-title">Payment Successful!</div>
+          <div class="gcash-success-icon"><i class="ti ti-circle-check"></i></div>
+          <div class="gcash-success-title">Payment Sent!</div>
           <div class="gcash-success-amount">₱150.00</div>
-          <div class="gcash-success-sub">Sent to <strong>Daniel R.</strong></div>
-
+          <div class="gcash-success-sub">Sent to <strong>Daniel</strong></div>
           <div class="gcash-success-details">
             <div class="gcash-detail-row">
-              <span class="gcash-detail-label">Reference No.</span>
-              <span class="gcash-detail-value gcash-ref">7824 0915 3847</span>
+              <span class="gcash-detail-label">Ref No.</span>
+              <span class="gcash-detail-value gcash-ref">7892 4561 2309</span>
             </div>
+            <div class="gcash-detail-divider"></div>
             <div class="gcash-detail-row">
-              <span class="gcash-detail-label">Date & Time</span>
-              <span class="gcash-detail-value">Apr 2, 2026 · 10:52 AM</span>
+              <span class="gcash-detail-label">Date</span>
+              <span class="gcash-detail-value">Apr 01, 2025 · 8:42 AM</span>
             </div>
-            <div class="gcash-detail-row">
-              <span class="gcash-detail-label">Item</span>
-              <span class="gcash-detail-value">Power Bank (Lend)</span>
+          </div>
+          <button class="gcash-done-btn" id="gcashDoneBtn">Done</button>
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+           FEEDBACK OVERLAY
+           ════════════════════════════════════ -->
+      <div class="feedback-overlay" id="feedbackOverlay">
+        <div class="feedback-overlay-backdrop" id="feedbackBackdrop"></div>
+        <div class="feedback-panel">
+
+          <button class="feedback-close" id="feedbackClose">
+            <i class="ti ti-x"></i>
+          </button>
+
+          <div class="feedback-header">
+            <div class="feedback-header-icon">
+              <i class="ti ti-star"></i>
+            </div>
+            <h2 class="feedback-header-title">Rate Your Experience</h2>
+            <p class="feedback-header-sub">
+              How was your transaction with <strong>Daniel</strong>?
+            </p>
+          </div>
+
+          <div class="feedback-stars" id="feedbackStars">
+            <button class="feedback-star" data-rating="1"><i class="ti ti-star"></i></button>
+            <button class="feedback-star" data-rating="2"><i class="ti ti-star"></i></button>
+            <button class="feedback-star" data-rating="3"><i class="ti ti-star"></i></button>
+            <button class="feedback-star" data-rating="4"><i class="ti ti-star"></i></button>
+            <button class="feedback-star" data-rating="5"><i class="ti ti-star"></i></button>
+          </div>
+          <div class="feedback-rating-label" id="feedbackRatingLabel">Tap a star to rate</div>
+
+          <div class="feedback-tags-section">
+            <div class="feedback-tags-label">What best describes Daniel?</div>
+            <div class="feedback-tags" id="feedbackTags">
+              <button class="feedback-tag" data-tag="Punctual">
+                <i class="ti ti-clock-check"></i> Punctual
+              </button>
+              <button class="feedback-tag" data-tag="Friendly">
+                <i class="ti ti-heart-handshake"></i> Friendly
+              </button>
+              <button class="feedback-tag" data-tag="Trustworthy">
+                <i class="ti ti-thumb-up"></i> Trustworthy
+              </button>
+              <button class="feedback-tag" data-tag="Item in Good Condition">
+                <i class="ti ti-package"></i> Good Condition
+              </button>
+              <button class="feedback-tag" data-tag="Responsive">
+                <i class="ti ti-message-circle"></i> Responsive
+              </button>
+              <button class="feedback-tag" data-tag="Accommodating">
+                <i class="ti ti-mood-happy"></i> Accommodating
+              </button>
             </div>
           </div>
 
-          <button class="gcash-done-btn" id="gcashDoneBtn">Done</button>
+          <div class="feedback-comment-section">
+            <label class="feedback-comment-label" for="feedbackComment">
+              Leave a comment (optional)
+            </label>
+            <textarea class="feedback-comment-input" id="feedbackComment" placeholder="Share your experience…"
+              rows="3"></textarea>
+          </div>
 
+          <button class="feedback-submit-btn" id="feedbackSubmitBtn" disabled>
+            <i class="ti ti-send"></i>
+            <span>Submit Review</span>
+          </button>
+
+        </div>
+      </div>
+
+      <!-- ════════════════════════════════════
+           FEEDBACK SUCCESS
+           ════════════════════════════════════ -->
+      <div class="feedback-overlay" id="feedbackSuccessOverlay">
+        <div class="feedback-overlay-backdrop" id="feedbackSuccessBackdrop"></div>
+        <div class="feedback-success-panel">
+          <div class="feedback-success-icon">
+            <i class="ti ti-circle-check"></i>
+          </div>
+          <h2 class="feedback-success-title">Review Submitted!</h2>
+          <p class="feedback-success-sub">
+            Thank you for your feedback. This helps build
+            a trusted community at PLP.
+          </p>
+          <div class="feedback-success-summary" id="feedbackSuccessSummary"></div>
+          <button class="feedback-success-btn" id="feedbackDoneBtn">
+            <span>Done</span>
+          </button>
         </div>
       </div>
 
@@ -273,142 +344,374 @@
   <script src="js/app.js"></script>
 
   <script>
-    /* ── Read source from URL ── */
-    const params = new URLSearchParams(window.location.search);
-    const from = params.get('from') || 'lend';
-
-    document.getElementById('chatBack').href = `post5.html?from=${from}`;
-
     /* ══════════════════════════════════════
-       GCASH PAYMENT OVERLAY
+       SETUP
        ══════════════════════════════════════ */
 
-    const gcashPayBtn = document.getElementById('gcashPayBtn');
-    const gcashOv = document.getElementById('gcashOverlay');
-    const gcashBd = document.getElementById('gcashBackdrop');
-    const gcashClose = document.getElementById('gcashClose');
-    const gcashConfirmBtn = document.getElementById('gcashConfirmBtn');
-    const gcashPayBar = document.getElementById('gcashPayBar');
-
-    const gcashSuccessOv = document.getElementById('gcashSuccessOverlay');
-    const gcashSuccessBd = document.getElementById('gcashSuccessBackdrop');
-    const gcashDoneBtn = document.getElementById('gcashDoneBtn');
+    const params = new URLSearchParams(window.location.search);
+    const from = params.get('from') || 'lend';
+    document.getElementById('chatBack').href = `post5.html?from=${from}`;
 
     const chatBody = document.getElementById('chatBody');
 
-    /* ── Open payment ── */
-    gcashPayBtn.addEventListener('click', () => {
-      gcashOv.classList.add('active');
+    /* helper — scroll chat to bottom */
+    function scrollChat() {
+      chatBody.scrollTop = chatBody.scrollHeight;
+    }
+
+    /* helper — add system message */
+    function addSystemMsg(icon, text) {
+      chatBody.insertAdjacentHTML('beforeend', `
+        <div class="txn-system-msg">
+          <i class="ti ${icon}"></i>
+          <span>${text}</span>
+        </div>`);
+      scrollChat();
+    }
+
+    /* helper — add incoming chat bubble */
+    function addIncomingMsg(avatar, text, time) {
+      chatBody.insertAdjacentHTML('beforeend', `
+        <div class="chat-msg chat-msg-in">
+          <div class="chat-msg-avatar">${avatar}</div>
+          <div class="chat-bubble chat-bubble-in">
+            <p>${text}</p>
+            <span class="chat-bubble-time">${time}</span>
+          </div>
+        </div>`);
+      scrollChat();
+    }
+
+    /* ══════════════════════════════════════
+       TRANSACTION TRACKER
+       ══════════════════════════════════════ */
+
+    const txnSteps = document.querySelectorAll('.txn-step');
+    const txnLines = document.querySelectorAll('.txn-step-line');
+    const txnPill = document.getElementById('txnStatusPill');
+    const txnActionBtn = document.getElementById('txnActionBtn');
+    const feedbackTriggerBar = document.getElementById('feedbackTriggerBar');
+
+    const STAGES = [
+      {
+        id: 'requested',
+        step: 1,
+        pill: { icon: 'ti-clock', text: 'Pending', cls: 'txn-pill-pending' },
+        action: { icon: 'ti-clock', text: 'Waiting for Daniel to accept…', disabled: true }
+      },
+      {
+        id: 'accepted',
+        step: 2,
+        pill: { icon: 'ti-circle-check', text: 'Accepted', cls: 'txn-pill-accepted' },
+        action: { icon: 'ti-hand-stop', text: 'Confirm Item Received', disabled: false },
+        onEnter: () => {
+          addIncomingMsg('D', "Sure! Let's meet at the lobby. I'll be there in 5 mins 👍", '8:37 AM');
+          addSystemMsg('ti-circle-check', 'Daniel accepted your request');
+        }
+      },
+      {
+        id: 'handed',
+        step: 3,
+        pill: { icon: 'ti-transfer-in', text: 'In Progress', cls: 'txn-pill-progress' },
+        action: { icon: 'ti-refresh', text: 'Mark as Returned', disabled: false },
+        onEnter: () => {
+          addSystemMsg('ti-transfer-in', 'Item handed over — transaction in progress');
+          addIncomingMsg('D', 'Here you go! Just return it by end of day 😊', '8:45 AM');
+        }
+      },
+      {
+        id: 'returned',
+        step: 4,
+        pill: { icon: 'ti-circle-check', text: 'Completed', cls: 'txn-pill-completed' },
+        action: null,
+        onEnter: () => {
+          addSystemMsg('ti-circle-check', 'Item returned — transaction complete!');
+          addIncomingMsg('D', 'Got it back, thanks! Hope it helped 🙌', '5:12 PM');
+
+          /* Hide action bar, show feedback trigger */
+          document.getElementById('txnActionBar').style.display = 'none';
+          feedbackTriggerBar.style.display = 'block';
+        }
+      }
+    ];
+
+    let currentStage = 0;
+
+    function renderStage() {
+      const stage = STAGES[currentStage];
+
+      /* Progress dots */
+      txnSteps.forEach((step, i) => {
+        const num = i + 1;
+        step.classList.remove('active', 'completed');
+        if (num < stage.step) step.classList.add('completed');
+        if (num === stage.step) step.classList.add('active');
+      });
+
+      /* Lines */
+      txnLines.forEach((line, i) => {
+        line.classList.toggle('filled', i < stage.step - 1);
+      });
+
+      /* Pill */
+      txnPill.className = 'txn-status-pill ' + stage.pill.cls;
+      txnPill.innerHTML = `<i class="ti ${stage.pill.icon}"></i><span>${stage.pill.text}</span>`;
+
+      /* Action button */
+      if (stage.action) {
+        txnActionBtn.className = 'txn-action-btn ' + (stage.action.cls || '');
+        txnActionBtn.disabled = stage.action.disabled;
+        txnActionBtn.innerHTML = `<i class="ti ${stage.action.icon}"></i><span>${stage.action.text}</span>`;
+      }
+    }
+
+    function advanceStage() {
+      if (currentStage >= STAGES.length - 1) return;
+      currentStage++;
+
+      const stage = STAGES[currentStage];
+      if (stage.onEnter) stage.onEnter();
+
+      renderStage();
+    }
+
+    /* Auto-advance from "requested" to "accepted" after 2s */
+    setTimeout(() => {
+      if (currentStage === 0) advanceStage();
+    }, 2000);
+
+    /* Action button click */
+    txnActionBtn.addEventListener('click', () => {
+      if (txnActionBtn.disabled) return;
+      advanceStage();
     });
 
-    /* ── Close payment ── */
-    gcashBd.addEventListener('click', () => gcashOv.classList.remove('active'));
-    gcashClose.addEventListener('click', () => gcashOv.classList.remove('active'));
+    /* Initial render */
+    renderStage();
 
-    /* ── Confirm payment ── */
+    /* ══════════════════════════════════════
+       GCASH PAYMENT
+       ══════════════════════════════════════ */
+
+    const gcashPayBtn = document.getElementById('gcashPayBtn');
+    const gcashOverlay = document.getElementById('gcashOverlay');
+    const gcashBackdrop = document.getElementById('gcashBackdrop');
+    const gcashCloseBtn = document.getElementById('gcashClose');
+    const gcashConfirmBtn = document.getElementById('gcashConfirmBtn');
+    const gcashSuccessOverlay = document.getElementById('gcashSuccessOverlay');
+
+    gcashPayBtn.addEventListener('click', () => gcashOverlay.classList.add('active'));
+    gcashBackdrop.addEventListener('click', () => gcashOverlay.classList.remove('active'));
+    gcashCloseBtn.addEventListener('click', () => gcashOverlay.classList.remove('active'));
+
     gcashConfirmBtn.addEventListener('click', () => {
       gcashConfirmBtn.disabled = true;
-      gcashConfirmBtn.innerHTML = '<i class="ti ti-loader-2 gcash-spin"></i> <span>Processing...</span>';
+      gcashConfirmBtn.innerHTML = '<i class="ti ti-loader gcash-spin"></i><span>Processing…</span>';
 
       setTimeout(() => {
-        gcashOv.classList.remove('active');
+        gcashOverlay.classList.remove('active');
 
+        /* Reset button */
         gcashConfirmBtn.disabled = false;
-        gcashConfirmBtn.innerHTML = '<span>Confirm Payment</span>';
+        gcashConfirmBtn.innerHTML = '<span>Confirm ₱150.00</span>';
 
-        setTimeout(() => {
-          gcashSuccessOv.classList.add('active');
-        }, 200);
-      }, 1800);
+        /* Show success */
+        setTimeout(() => gcashSuccessOverlay.classList.add('active'), 200);
+
+        /* Add payment message in chat */
+        chatBody.insertAdjacentHTML('beforeend', `
+          <div class="chat-payment-msg">
+            <div class="chat-payment-msg-icon">
+              <span class="gcash-logo-text" style="font-size:14px;">G</span>
+            </div>
+            <div class="chat-payment-msg-body">
+              <div class="chat-payment-msg-title">Payment Sent</div>
+              <div class="chat-payment-msg-amount">₱150.00</div>
+              <div class="chat-payment-msg-ref">Ref: 7892 4561 2309</div>
+              <div class="chat-payment-msg-status">
+                <i class="ti ti-circle-check"></i> Completed
+              </div>
+            </div>
+          </div>`);
+        scrollChat();
+
+        /* Update GCash button to completed */
+        gcashPayBtn.innerHTML = `
+          <div class="gcash-pay-trigger-logo">
+            <span class="gcash-logo-text">G</span>
+          </div>
+          <div class="gcash-pay-trigger-info">
+            <span class="gcash-pay-trigger-label">Payment sent</span>
+            <span class="gcash-pay-trigger-amount">₱150.00 ✓</span>
+          </div>`;
+        gcashPayBtn.disabled = true;
+        gcashPayBtn.style.opacity = '0.6';
+        gcashPayBtn.style.cursor = 'default';
+      }, 1500);
     });
 
-    /* ── Done — close success, update chat ── */
-    gcashDoneBtn.addEventListener('click', () => {
-      gcashSuccessOv.classList.remove('active');
+    document.getElementById('gcashDoneBtn').addEventListener('click', () => {
+      gcashSuccessOverlay.classList.remove('active');
+    });
 
-      // Hide pay bar
-      gcashPayBar.style.display = 'none';
+    document.getElementById('gcashSuccessBackdrop').addEventListener('click', () => {
+      gcashSuccessOverlay.classList.remove('active');
+    });
 
-      // Hide payment notice
-      const notice = document.querySelector('.chat-payment-notice');
-      if (notice) notice.style.display = 'none';
+    /* ══════════════════════════════════════
+       FEEDBACK
+       ══════════════════════════════════════ */
 
-      // Add payment confirmation card
-      const paymentMsg = document.createElement('div');
-      paymentMsg.className = 'chat-payment-msg';
-      paymentMsg.innerHTML = `
-        <div class="chat-payment-msg-icon">
-          <span class="gcash-logo-text">G</span>
+    const feedbackOverlay = document.getElementById('feedbackOverlay');
+    const feedbackBackdrop = document.getElementById('feedbackBackdrop');
+    const feedbackCloseBtn = document.getElementById('feedbackClose');
+    const feedbackTriggerBtn = document.getElementById('feedbackTriggerBtn');
+    const feedbackStars = document.querySelectorAll('.feedback-star');
+    const feedbackRatingLabel = document.getElementById('feedbackRatingLabel');
+    const feedbackTagBtns = document.querySelectorAll('.feedback-tag');
+    const feedbackSubmitBtn = document.getElementById('feedbackSubmitBtn');
+    const feedbackComment = document.getElementById('feedbackComment');
+
+    let selectedRating = 0;
+    let selectedTags = new Set();
+
+    const ratingLabels = {
+      1: 'Poor',
+      2: 'Fair',
+      3: 'Good',
+      4: 'Very Good',
+      5: 'Excellent!'
+    };
+
+    /* Open / close */
+    feedbackTriggerBtn.addEventListener('click', () => {
+      feedbackOverlay.classList.add('active');
+    });
+
+    function closeFeedback() {
+      feedbackOverlay.classList.remove('active');
+    }
+
+    feedbackBackdrop.addEventListener('click', closeFeedback);
+    feedbackCloseBtn.addEventListener('click', closeFeedback);
+
+    /* Star selection */
+    feedbackStars.forEach(star => {
+      const rating = parseInt(star.dataset.rating);
+
+      star.addEventListener('click', () => {
+        selectedRating = rating;
+        feedbackRatingLabel.textContent = ratingLabels[rating];
+
+        feedbackStars.forEach(s => {
+          const r = parseInt(s.dataset.rating);
+          const icon = s.querySelector('i');
+          if (r <= rating) {
+            icon.className = 'ti ti-star-filled';
+            s.classList.add('active');
+          } else {
+            icon.className = 'ti ti-star';
+            s.classList.remove('active');
+          }
+        });
+
+        feedbackSubmitBtn.disabled = false;
+      });
+
+      star.addEventListener('mouseenter', () => {
+        feedbackStars.forEach(s => {
+          s.classList.toggle('hover', parseInt(s.dataset.rating) <= rating);
+        });
+      });
+
+      star.addEventListener('mouseleave', () => {
+        feedbackStars.forEach(s => s.classList.remove('hover'));
+      });
+    });
+
+    /* Tag selection */
+    feedbackTagBtns.forEach(tag => {
+      tag.addEventListener('click', () => {
+        const val = tag.dataset.tag;
+        if (selectedTags.has(val)) {
+          selectedTags.delete(val);
+          tag.classList.remove('active');
+        } else {
+          selectedTags.add(val);
+          tag.classList.add('active');
+        }
+      });
+    });
+
+    /* Submit */
+    feedbackSubmitBtn.addEventListener('click', () => {
+      if (selectedRating === 0) return;
+
+      closeFeedback();
+
+      /* Build success summary */
+      const summary = document.getElementById('feedbackSuccessSummary');
+
+      let starsHTML = '';
+      for (let i = 1; i <= 5; i++) {
+        starsHTML += `<i class="ti ${i <= selectedRating ? 'ti-star-filled' : 'ti-star'}"></i>`;
+      }
+
+      let tagsHTML = '';
+      if (selectedTags.size > 0) {
+        tagsHTML = `<div class="feedback-success-tags">
+          ${[...selectedTags].map(t => `<span class="review-mini-tag">${t}</span>`).join('')}
+        </div>`;
+      }
+
+      const comment = feedbackComment.value.trim();
+      let commentHTML = '';
+      if (comment) {
+        commentHTML = `<p class="feedback-success-comment">"${comment}"</p>`;
+      }
+
+      summary.innerHTML = `
+        <div class="feedback-success-stars">${starsHTML}</div>
+        ${tagsHTML}
+        ${commentHTML}`;
+
+      /* Show success overlay */
+      setTimeout(() => {
+        document.getElementById('feedbackSuccessOverlay').classList.add('active');
+      }, 200);
+
+      /* Update trigger to done state */
+      feedbackTriggerBtn.innerHTML = `
+        <div class="feedback-trigger-icon feedback-trigger-icon-done">
+          <i class="ti ti-circle-check"></i>
         </div>
-        <div class="chat-payment-msg-body">
-          <div class="chat-payment-msg-title">GCash Payment Sent</div>
-          <div class="chat-payment-msg-amount">₱150.00</div>
-          <div class="chat-payment-msg-ref">Ref: 7824 0915 3847</div>
-          <div class="chat-payment-msg-status">
-            <i class="ti ti-circle-check"></i>
-            <span>Confirmed</span>
-          </div>
-        </div>
-      `;
-      chatBody.appendChild(paymentMsg);
-
-      // User's follow-up message
-      setTimeout(() => {
-        const userMsg = document.createElement('div');
-        userMsg.className = 'chat-msg chat-msg-out';
-        userMsg.innerHTML = `
-          <div class="chat-bubble chat-bubble-out">
-            <p>Sent! I'm heading to the lobby now 🏃</p>
-            <span class="chat-bubble-time">10:22 AM</span>
-          </div>
-        `;
-        chatBody.appendChild(userMsg);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 600);
-
-      // Daniel's reply
-      setTimeout(() => {
-        const reply = document.createElement('div');
-        reply.className = 'chat-msg chat-msg-in';
-        reply.innerHTML = `
-          <div class="chat-msg-avatar">D</div>
-          <div class="chat-bubble chat-bubble-in">
-            <p>Got it! Payment received 🎉 I'm by the entrance near the guard post, wearing a blue jacket</p>
-            <span class="chat-bubble-time">10:23 AM</span>
-          </div>
-        `;
-        chatBody.appendChild(reply);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 1800);
-
-      // Daniel's second message
-      setTimeout(() => {
-        const reply2 = document.createElement('div');
-        reply2.className = 'chat-msg chat-msg-in';
-        reply2.innerHTML = `
-          <div class="chat-msg-avatar">D</div>
-          <div class="chat-bubble chat-bubble-in">
-            <p>Just return it before 6pm ha, enjoy! 👍</p>
-            <span class="chat-bubble-time">10:23 AM</span>
-          </div>
-        `;
-        chatBody.appendChild(reply2);
-        chatBody.scrollTop = chatBody.scrollHeight;
-      }, 3000);
-
-      chatBody.scrollTop = chatBody.scrollHeight;
+        <div class="feedback-trigger-info">
+          <span class="feedback-trigger-label">Feedback submitted</span>
+          <span class="feedback-trigger-text">${selectedRating}/5 — Thank you!</span>
+        </div>`;
+      feedbackTriggerBtn.disabled = true;
+      feedbackTriggerBtn.classList.add('feedback-trigger-done');
     });
 
-    /* ── Close success via backdrop ── */
-    gcashSuccessBd.addEventListener('click', () => {
-      gcashDoneBtn.click();
+    /* Success done */
+    document.getElementById('feedbackDoneBtn').addEventListener('click', () => {
+      document.getElementById('feedbackSuccessOverlay').classList.remove('active');
     });
 
-    /* ── Escape ── */
+    document.getElementById('feedbackSuccessBackdrop').addEventListener('click', () => {
+      document.getElementById('feedbackSuccessOverlay').classList.remove('active');
+    });
+
+    /* ══════════════════════════════════════
+       ESCAPE KEY — close all overlays
+       ══════════════════════════════════════ */
+
     document.addEventListener('keydown', e => {
       if (e.key === 'Escape') {
-        gcashOv.classList.remove('active');
-        gcashSuccessOv.classList.remove('active');
+        gcashOverlay.classList.remove('active');
+        gcashSuccessOverlay.classList.remove('active');
+        closeFeedback();
+        document.getElementById('feedbackSuccessOverlay').classList.remove('active');
       }
     });
   </script>
